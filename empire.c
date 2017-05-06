@@ -79,7 +79,7 @@ do_command(char orders)
     switch (orders) {
     case 'A': /* turn on auto move mode */
 	automove = true;
-	error ("オートモードに移行した。");
+	error ("移動モードに移行した。");
 	user_move ();
 	comp_move (1);
 	save_game ();

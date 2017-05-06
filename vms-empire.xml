@@ -559,7 +559,7 @@
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Move(チェンジ)</emphasis></term>
+  <term><emphasis remap='B'>Move(移動モード)</emphasis></term>
   <listitem>
 <para>1ラウンドだけ移動モードへ移行します。</para>
   </listitem>
