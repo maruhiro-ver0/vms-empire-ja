@@ -14,7 +14,7 @@ DEBUG = -O2
 #PROFILE = -p -DPROFILE
 PROFILE =
 
-LIBS = -lncurses
+LIBS = -lncursesw
 
 # You shouldn't have to modify anything below this line.
 

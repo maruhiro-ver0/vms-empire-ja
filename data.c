@@ -26,10 +26,10 @@ more useful.
 
 piece_attr_t piece_attr[] = {
 	{'A', /* character for printing piece */
-	 "army", /* name of piece */ 
-	 "army", /* nickname */
-	 "an army", /* name with preceding article */
-	 "armies", /* plural */
+	 "地上部隊", /* name of piece */ 
+	 "地上部隊", /* nickname */
+	 "地上部隊", /* name with preceding article */
+	 "地上部隊", /* plural */
 	 "+", /* terrain */
 	 5, /* units to build */
 	 1, /* strength */
@@ -44,28 +44,28 @@ piece_attr_t piece_attr[] = {
 	 turns back.
 	*/
 	 
-	{'F', "fighter", "fighter", "a fighter", "fighters",
+	{'F', "戦闘機", "戦闘機", "戦闘機", "戦闘機",
 		".+", 10, 1,  1, 8, 0, 32},
 
-	{'P', "patrol boat", "patrol", "a patrol boat", "patrol boats",
+	{'P', "哨戒艇", "哨戒艇", "哨戒艇", "哨戒艇",
 		".",  15, 1,  1, 4, 0, INFINITY},
 		
-	{'D', "destroyer", "destroyer", "a destroyer", "destroyers",
+	{'D', "駆逐艦", "駆逐艦", "駆逐艦", "駆逐艦",
 		".",  20, 1,  3, 2, 0, INFINITY},
 
-	{'S', "submarine", "submarine", "a submarine", "submarines",
+	{'S', "潜水艦", "潜水艦", "潜水艦", "潜水艦",
 		".",  20, 3,  2, 2, 0, INFINITY},
 
-	{'T', "troop transport", "transport", "a troop transport", "troop transports",
+	{'T', "輸送艦", "輸送艦", "輸送艦", "輸送艦",
 		".",  30, 1,  1, 2, 6, INFINITY},
 
-	{'C', "aircraft carrier", "carrier", "an aircraft carrier", "aircraft carriers",
+	{'C', "空母", "空母", "空母", "空母",
 		".",  30, 1,  8, 2, 8, INFINITY},
 
-	{'B', "battleship", "battleship", "a battleship", "battleships",
+	{'B', "戦艦", "戦艦", "戦艦", "戦艦",
 		".",  40, 2, 10, 2, 0, INFINITY},
 		
-	{'Z', "satellite", "satellite", "a satellite", "satellites",
+	{'Z', "人工衛星", "人工衛星", "人工衛星", "人工衛星",
 		".+", 50, 0, 1, 10, 0, 500}
 };
 
@@ -82,9 +82,9 @@ int dir_offset [] = {-MAP_WIDTH, /* north */
 
 /* Names of movement functions. */
 
-char *func_name[] = {"none", "random", "sentry", "fill", "land",
-			"explore", "load", "attack", "load", "repair",
-			"transport",
+char *func_name[] = {"なし", "ランダム", "防衛", "搭載", "帰還",
+			"探索", "load", "攻撃", "load", "修理",
+			"搭乗",
 			"W", "E", "D", "C", "X", "Z", "A", "Q"};
 
 /* The order in which pieces should be moved. */
@@ -187,77 +187,77 @@ Various help texts.
 */
 
 char *help_cmd[] = {
-	"COMMAND MODE",
-	"Auto:     enter automove mode",
-	"City:     give city to computer",
-	"Date:     print round",
-	"Examine:  examine enemy map",
-	"File:     print map to file",
-	"Give:     give move to computer",
-	"Help:     display this text",
-	"J:        enter edit mode",
-	"Move:     make a move",
-	"N:        give N moves to computer",
-	"Print:    print a sector",
-	"Quit:     quit game",
-	"Restore:  restore game",
-	"Save:     save game",
-	"Trace:    save movie in empmovie.dat",
-	"Watch:    watch movie",
-	"Zoom:     display compressed map",
-	"<ctrl-L>: redraw screen"
+	"コマンドモード",
+	"Auto:     移動モードに移行する",
+	"City:     コンピュータに都市を与える",
+	"Date:     ラウンドを表示する",
+	"Examine:  マップを調査する",
+	"File:     マップを表示する",
+	"Give:     コンピュータに手番を渡す",
+	"Help:     このテキストを表示する",
+	"J:        エディットモードに移行する",
+	"Move:     自分のユニットを動かす",
+	"N:        コンピュータにN手渡す",
+	"Print:    セクターを表示する",
+	"Quit:     ゲームを終了する",
+	"Restore:  ゲームを復帰させる",
+	"Save:     ゲームを保存する",
+	"Trace:    empmovie.datに棋譜を保存する",
+	"Watch:    棋譜を再生する",
+	"Zoom:     縮小されたマップを見る",
+	"<ctrl-L>: 画面を再描画する"
 };
 int cmd_lines = 19;
 
 char *help_user[] = {
-	"USER MODE",
+	"移動モード",
 	"QWE",
-	"A D       movement directions",
+	"A D       移動方向",
 	"ZXC",
-	"<space>:  sit",
-	"Build:    change city production",
-	"Fill:     set func to fill",
-	"Grope:    set func to explore",
-	"Help:     display this text",
-	"I <dir>:  set func to dir",
-	"J:        enter edit mode",
-	"Kill:     set func to awake",
-	"Land:     set func to land",
-	"Out:      leave automove mode",
-	"Print:    redraw screen",
-	"Random:   set func to random",
-	"Sentry:   set func to sentry",
-	"Transport:set func to transport",
-	"Upgrade:  set func to repair",
-	"V <piece> <func>:  set city func",
-	"Y:        set func to attack",
-	"<ctrl-L>: redraw screen",
-	"?:        describe piece"
+	"<space>:  何もしない",
+	"Build:    都市の生産を変える",
+	"Fill:     任務を搭載にする",
+	"Grope:    任務を探索にする",
+	"Help:     このテキストを表示する",
+	"I <方向>: 任務を指定方向への移動にする",
+	"J:        エディットモードに移行する",
+	"Kill:     任務を解除する",
+	"Land:     任務を着地にする",
+	"Out:      移動モードを終了する",
+	"Print:    画面を表示する",
+	"Random:   任務をランダムにする",
+	"Sentry:   任務を防衛にする",
+	"Transport:任務を搭乗にする",
+	"Upgrade:  任務を修理にする",
+	"V <piece> <func>: 都市の任務を設定する",
+	"Y:        任務を攻撃にする",
+	"<ctrl-L>: 画面を再描画する",
+	"?:        ユニットの情報を表示する"
 };
 int user_lines = 22;
 	
 char *help_edit[] = {
-	"EDIT MODE",
+	"エディットモード",
 	"QWE",
-	"A D       movement directions",
+	"A D       移動方向",
 	"ZXC",
-	"Build:    change city production",
-	"Fill:     set func to fill",
-	"Grope:    set func to explore",
-	"Help:     display this text",
-	"I <dir>:  set func to dir",
-	"Kill:     set func to awake",
-	"Land:     set func to land",
-	"Mark:     mark piece",
-	"N:        set dest for marked piece",
-	"Out:      exit edit mode",
-	"Print:    print sector",
-	"Random:   set func to random",
-	"Sentry:   set func to sentry",
-	"Upgrade:  set func to repair",
-	"V <piece> <func>:  set city func",
-	"Y:        set func to attack",
-	"<ctrl-L>: redraw screen",
-	"?:        describe piece"
+	"Build:    都市の生産を変える",
+	"Fill:     任務を搭載にする",
+	"Grope:    任務を探索にする",
+	"Help:     このテキストを表示する",
+	"I <方向>: 任務を指定方向への移動にする",
+	"Kill:     任務を解除する",
+	"Land:     任務を着地にする",
+	"Mark:     ユニットをマークする",
+	"N:        マークしたユニットの移動先",
+	"Out:      エディットモードを終了する",
+	"Print:    セクターを表示する",
+	"Random:   任務をランダムにする",
+	"Sentry:   任務を防衛にする",
+	"Upgrade:  任務を修理にする",
+	"V <ユニット> <任務>: 都市の任務を設定",
+	"Y:        任務を攻撃にする",
+	"<ctrl-L>: 画面を再描画する",
+	"?:        ユニットの情報を表示する"
 };
 int edit_lines = 22;

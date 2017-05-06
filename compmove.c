@@ -46,7 +46,7 @@ comp_move(int nmoves)
 	    scan (comp_map, obj->loc); /* refresh comp's view of world */
 
     for (i = 1; i <= nmoves; i++) { /* for each move we get... */
-	comment ("Thinking...");
+	comment ("思考中…");
 
 	(void) memcpy (emap, comp_map, MAP_SIZE * sizeof (view_map_t));
 	vmap_prune_explore_locs (emap);
@@ -418,8 +418,8 @@ cpiece_move(piece_info_t *obj)
 	    if (comp_map[obj->loc].contents == 'X')
 		obj->moved = piece_attr[FIGHTER].speed;
 	    else if (obj->range == 0) {
-		pdebug ("Fighter at %d crashed and burned\n", loc_disp(obj->loc));
-		ksend ("Fighter at %d crashed and burned\n", loc_disp(obj->loc));
+		pdebug ("戦闘機%dは墜落し燃え尽きた。\n", loc_disp(obj->loc));
+		ksend ("戦闘機%dは墜落し燃え尽きた。\n", loc_disp(obj->loc));
 		kill_obj (obj, obj->loc); /* crash & burn */
 	    }
 	}
@@ -1104,33 +1104,30 @@ check_endgame(void)
 		
     if (ncomp_city < nuser_city/3 && ncomp_army < nuser_army/3) {
 	clear_screen ();
-	prompt ("The computer acknowledges defeat. Do");
-	ksend ("The computer acknowledges defeat.");
-	error ("you wish to smash the rest of the enemy?");
+	prompt ("コンピュータが降伏を申し入れてきた。");
+	ksend ("コンピュータが降伏を申し入れてきた。");
+	error ("残りの敵を掃討するか?");
 
 	if (get_chx() !=  'Y') empend ();
-	announce ("\nThe enemy inadvertantly revealed its code used for");
-	announce ("\nreceiving battle information. You can display what");
-	announce ("\nthey've learned with the ''E'' command.");
+	announce ("\n敵は誤って戦闘情報の暗号を流出させた。");
+	announce ("\n敵が持っている情報は'E'コマンドで知ることができる。");
 	resigned = true;
 	win = ratio_win;
 	automove = false;
     }
     else if (ncomp_city == 0 && ncomp_army == 0) {
 	clear_screen ();
-	announce ("The enemy is incapable of defeating you.\n");
-	announce ("You are free to rape the empire as you wish.\n");
-	announce ("There may be, however, remnants of the enemy fleet\n");
-	announce ("to be routed out and destroyed.\n");
+	announce ("あなたの敵は敗れその力を失った。\n");
+	announce ("望むならば帝国を自由に踏みにじることも可能だろう。\n");
+	announce ("だがその前に、敵の艦隊が残されていればそれを引きずり出し、破壊しなければならない。");
 	win = wipeout_win;
 	automove = false;
     }
     else if (nuser_city == 0 && nuser_army == 0) {
 	clear_screen ();
-	announce ("You have been rendered incapable of\n");
-	announce ("defeating the rampaging enemy fascists! The\n");
-	announce ("empire is lost. If you have any ships left, you\n");
-	announce ("may attempt to harass enemy shipping.");
+	announce ("あなたは凶暴なファシストに無力にも敗れ去った! \n");
+	announce ("帝国は消滅した。もしあなたの艦隊が残っているならば、\n");
+	announce ("敵の艦隊に最期の戦いを挑むこともできるだろう。");
 	win = 1;
 	automove = false;
     }

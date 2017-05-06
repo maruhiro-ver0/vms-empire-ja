@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
                    "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
 <refentry id='vmsempire6'>
@@ -15,7 +15,7 @@
 </refmeta>
 <refnamediv>
 <refname>empire</refname>
-<refpurpose>the wargame of the century</refpurpose>
+<refpurpose>世紀のウォーゲーム</refpurpose>
 </refnamediv>
 <refsynopsisdiv id='synopsis'>
 <cmdsynopsis>
@@ -28,118 +28,99 @@
 </cmdsynopsis>
 </refsynopsisdiv>
 
-<refsect1 id='description'><title>DESCRIPTION</title>
-<para>Empire is a simulation of a full-scale war between two
-emperors, the computer and you.  Naturally, there is only
-room for one, so the object of the game is to destroy
-the other.  The computer plays by the same rules that you
-do.</para>
+<refsect1 id='description'><title>概要</title>
+<para>Empireはあなたとコンピュータの2人の皇帝による全面戦争のシミュレーションゲームです。
+もちろん勝つのは1人で、ゲームの目的は相手を打ち負かすことです。
+コンピュータとあなたは同じルールでプレーします。</para>
 
 <variablelist>
   <varlistentry>
   <term><option>-w</option><replaceable>water</replaceable></term>
   <listitem>
-<para>This option controls the amount of water on the map.
-This is given as the percentage of the map which should
-be water.  The default is 70% water.  <emphasis remap='I'>water</emphasis>
-must be an integer in the between 10 and 90 inclusive.</para>
+<para>このオプションはマップの水域の量を決定します。
+指定した百分率(%)の値がマップの水域になります。デフォルトは70%です。
+<emphasis remap='I'>water</emphasis>は10から90の間の整数でなければなりません。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><option>-s</option><replaceable>smooth</replaceable></term>
   <listitem>
-<para>This controls the smoothness of the map.  A low value
-will produce a highly chaotic map with lots of small
-islands or lakes.  A high value will produce a map
-with a few scattered continents.  Be forewarned that
-a high value will cause the program to take a long
-time to start up.  The default value is 5.</para>
+<para>このオプションはマップの滑らかさを決めます。
+値が小さいと多くの小さな島や湖でできた混沌としたマップが作られ、
+大きいと少数の大きな大陸のあるマップが作られます。
+値が大きいほど生成に時間が掛かるので注意してください。
+デフォルトは5です。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><option>-d</option><replaceable>delay</replaceable></term>
   <listitem>
-<para>This option controls the length of time the computer will
-delay after printing informational messages at the top of
-the screen.  <emphasis remap='I'>delay</emphasis> is specified in milliseconds.  The
-default value is 2000 which allows the user two seconds to
-read a message.</para>
+<para>このオプションは画面の上部にメッセージを表示した後にどのくらいの長さコンピュータが待つかを決めます。
+<emphasis remap='I'>delay</emphasis>はミリ秒で指定します。
+デフォルトは2000で、ユーザにはメッセージを読む時間が2秒間あります。</para>
   </listitem>
   </varlistentry>
 </variablelist>
 </refsect1>
 
-<refsect1 id='examples'><title>EXAMPLES</title>
+<refsect1 id='examples'><title>例</title>
 <para>empire -w90 -s2</para>
-<para>This produces a map with many islands.</para>
+<para>これは多くの島のあるマップを生成します。</para>
 <para>empire -w50 -s0</para>
-<para>This produces a really strange map.  These values
-are not recommended for the faint at heart.</para>
+<para>これはかなり変わったマップを生成します。
+これは臆病者には勧められません。</para>
 <para>empire -w10</para>
-<para>This produces a map with lots of land and a few lakes.
-The computer will have a hard time on this sort of map
-as it will try and produce lots of troop transports,
-which are fairly useless.</para>
-<para>There are two other option.</para>
+<para>これは多くの島と少しの湖のあるマップを生成します。
+このようなマップでは、コンピュータは無意味な輸送艦を多く作りがちで苦戦します。</para>
+<para>これ以外にも2つのオプションがあります。</para>
 <variablelist>
   <varlistentry>
   <term><option>-S</option><replaceable>interval</replaceable></term>
   <listitem>
-    <para>sets the <emphasis remap='I'>save interval</emphasis> for the
-    game (default is 10). Once per <emphasis remap='I'>interval</emphasis>
-    turns the game state will be automatically saved after your move. It
-    will be saved in any case when you change modes or do various special
-    things from command mode, such as `M' or `N'.</para>
+    <para>ゲームの<emphasis remap='I'>保存間隔</emphasis>を設定します(デフォルトは10)。
+    <emphasis remap='I'>interval</emphasis>ターンに一度、あなたが動かした後にゲームの状態を保存します。
+    これにはモードを変えた場合や、コマンドモードでの`M'や`N'を含む様々な行動も含まれます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><option>-f</option><replaceable>savefile</replaceable></term>
   <listitem>
-    <para>Set the save file name (normally empsave.dat).</para>
+    <para>保存ファイル名を設定します(通常はempsave.dat)。</para>
   </listitem>
   </varlistentry>
 </variablelist>
 </refsect1>
 
-<refsect1 id='introduction'><title>INTRODUCTION</title>
+<refsect1 id='introduction'><title>はじめに</title>
 
-<para>Empire is a war game played between you and the computer.  The world
-on which the game takes place is a square rectangle containing cities,
-land, and water.  Cities are used to build armies, planes, and ships
-which can move across the world destroying enemy pieces, exploring,
-and capturing more cities.  The objective of the game is to destroy
-all the enemy pieces, and capture all the cities.</para>
+<para>Empireはあなたとコンピュータが対戦するウォーゲームです。
+ゲームの世界は正方形で構成されていて、そこには都市、陸、水域があります。
+都市では地上部隊、航空機、艦船を生産することができ、それで敵地を破壊、探索し、都市を占領します。
+このゲームの目的は敵地を全て破壊し、全ての都市を奪うことです。</para>
 
-<para>The world is a rectangle 60 by 100 squares on a side.  The world
-consists of sea (.), land (+), uncontrolled cities (*),
-computer-controlled cities (X), and cities that you control
-(O).</para>
+<para>この世界は60×100個の正方形で構成された長方形で、
+海(.)、陸(+)、中立の都市(*)、コンピュータの都市(X)、そしてあなたの都市(O)が存在します。</para>
 
-<para>The world is displayed on the player's screen during movement.
-(On terminals with small screens, only a portion of the world is shown
-at any one time.)  Each piece is represented by a unique character on
-the map.  With a few exceptions, you can only have one piece on a
-given location.  On the map, you are shown only the 8 squares adjacent
-to your units.  This information is updated before and during each of
-your moves.  The map displays the most recent information
-known.</para>
+<para>マップはあなたの手番の間、画面に表示されます。
+(端末の画面が小さい場合はマップの一部のみ表示されます。)
+各ユニットはマップ上でそれぞれの文字として表示される。
+いくつかの例外がありますが、1つのマスには1つのユニットしか存在できません。
+マップは、あなたのユニットと接した8方向のマスのみ表示されます。
+この情報はあなたの移動前と移動後に更新されます。
+マップには最後に知られた情報が表示されています。</para>
 
-<para>The game starts by assigning you one city and the
-computer one city.  Cities can produce new pieces.  Every
-city that you own produces more pieces for you according
-to the cost of the desired piece.  The typical play of the
-game is to issue the Automove command until you decide
-to do something special.  During movement in each round,
-the player is prompted to move each piece that does not
-otherwise have an assigned function.</para>
+<para>ゲームはあなたの都市1つとコンピュータの都市1つの状態から始まります。
+都市では新しいユニットを生成できます。
+あなたのそれぞれの都市では、コストに応じて望む種類の新しいユニットをさらに生成することができます。
+多くのプレイヤーは特別に何かをするまではAutomove(移動モード)コマンドを使います。
+それぞれのラウンドで、プレイヤーは自動的に行動しないユニットを動かすことを求められます。</para>
 
-<para>Map coordinates are 4-digit numbers.  The first two
-digits are the row, the second two digits are the
-column.</para>
+<para>マップの座標は4桁の数値で表します。
+先頭の2桁は行で、後の2桁は列です。</para>
 </refsect1>
 
-<refsect1 id='pieces'><title>PIECES</title>
-<para>The pieces are as follows:</para>
+<refsect1 id='pieces'><title>ユニット</title>
+<para>ユニットには次のものがあります:</para>
 
 <informaltable pgwide='0' frame='all'>
   <tgroup cols='7' align='center'>
@@ -152,16 +133,16 @@ column.</para>
     <colspec colname='c7'/>
     <tbody>
       <row rowsep='1'>
-        <entry align='left' colsep='1'>Piece</entry>
-        <entry align='center' colsep='1'>You</entry>
-        <entry align='center' colsep='1'>Enemy</entry>
-        <entry align='right' colsep='1'>Moves</entry>
-        <entry align='right' colsep='1'>Hits</entry>
-        <entry align='right' colsep='1'>Str</entry>
-        <entry align='center'>Cost</entry>
+        <entry align='left' colsep='1'>ユニット</entry>
+        <entry align='center' colsep='1'>あなた</entry>
+        <entry align='center' colsep='1'>相手</entry>
+        <entry align='right' colsep='1'>移動 (Moves)</entry>
+        <entry align='right' colsep='1'>ヒットポイント (Hits)</entry>
+        <entry align='right' colsep='1'>攻撃 (Str)</entry>
+        <entry align='center'>コスト (Cost)</entry>
       </row>
       <row>
-        <entry align='left' colsep='1'>Army</entry>
+        <entry align='left' colsep='1'>地上部隊 (Army)</entry>
         <entry align='center' colsep='1'>A</entry>
         <entry align='center' colsep='1'>a</entry>
         <entry align='right' colsep='1'>1</entry>
@@ -170,7 +151,7 @@ column.</para>
         <entry align='center'>5(6)</entry>
       </row>
       <row>
-        <entry align='left' colsep='1'>Fighter</entry>
+        <entry align='left' colsep='1'>戦闘機 (Fighter)</entry>
         <entry align='center' colsep='1'>F</entry>
         <entry align='center' colsep='1'>f</entry>
         <entry align='right' colsep='1'>8</entry>
@@ -179,7 +160,7 @@ column.</para>
         <entry align='center'>10(12)</entry>
       </row>
       <row>
-        <entry align='left' colsep='1'>Patrol Boat</entry>
+        <entry align='left' colsep='1'>哨戒艇 (Patrol Boat)</entry>
         <entry align='center' colsep='1'>P</entry>
         <entry align='center' colsep='1'>p</entry>
         <entry align='right' colsep='1'>4</entry>
@@ -188,7 +169,7 @@ column.</para>
         <entry align='center'>15(18)</entry>
       </row>
       <row>
-        <entry align='left' colsep='1'>Destroyer</entry>
+        <entry align='left' colsep='1'>駆逐艦 (Destroyer)</entry>
         <entry align='center' colsep='1'>D</entry>
         <entry align='center' colsep='1'>d</entry>
         <entry align='right' colsep='1'>2</entry>
@@ -197,7 +178,7 @@ column.</para>
         <entry align='center'>20(24)</entry>
       </row>
       <row>
-        <entry align='left' colsep='1'>Submarine</entry>
+        <entry align='left' colsep='1'>潜水艦 (Submarine)</entry>
         <entry align='center' colsep='1'>S</entry>
         <entry align='center' colsep='1'>s</entry>
         <entry align='right' colsep='1'>2</entry>
@@ -206,7 +187,7 @@ column.</para>
         <entry align='center'>20(24)</entry>
       </row>
       <row>
-        <entry align='left' colsep='1'>Troop Transport</entry>
+        <entry align='left' colsep='1'>輸送艦 (Troop Transport)</entry>
         <entry align='center' colsep='1'>T</entry>
         <entry align='center' colsep='1'>t</entry>
         <entry align='right' colsep='1'>2</entry>
@@ -215,7 +196,7 @@ column.</para>
         <entry align='center'>30(36)</entry>
       </row>
       <row>
-        <entry align='left' colsep='1'>Aircraft Carrier</entry>
+        <entry align='left' colsep='1'>空母 (Aircraft Carrier)</entry>
         <entry align='center' colsep='1'>C</entry>
         <entry align='center' colsep='1'>c</entry>
         <entry align='right' colsep='1'>2</entry>
@@ -224,7 +205,7 @@ column.</para>
         <entry align='center'>30(36)</entry>
       </row>
       <row>
-        <entry align='left' colsep='1'>Battleship</entry>
+        <entry align='left' colsep='1'>戦艦 (Battleship)</entry>
         <entry align='center' colsep='1'>B</entry>
         <entry align='center' colsep='1'>b</entry>
         <entry align='right' colsep='1'>2</entry>
@@ -233,7 +214,7 @@ column.</para>
         <entry align='center'>40(48)</entry>
       </row>
       <row>
-        <entry align='left' colsep='1'>Satellite</entry>
+        <entry align='left' colsep='1'>人工衛星 (Satellite)</entry>
         <entry align='center' colsep='1'>Z</entry>
         <entry align='center' colsep='1'>z</entry>
         <entry align='right' colsep='1'>10</entry>
@@ -245,101 +226,78 @@ column.</para>
   </tgroup>
 </informaltable>
 
-<para>The second column shows the map representation for your
-units.</para>
+<para>2列目はマップ上のあなたのユニットを表しています。</para>
 
-<para>The third shows the representations of enemy units.</para>
+<para>3列目は敵のユニットを表しています。</para>
 
-<para>Moves is the number of squares that the unit can move in a
-single round.</para>
+<para>移動(Moves)はそのユニットが1ラウンドで移動できるマスの数です。</para>
 
-<para>Hits is the amount of damage a unit can take before it
-is destroyed.</para>
+<para>ヒットポイント(Hits)は破壊に必要なダメージの量です。</para>
 
-<para>Strength is the amount of damage a unit can inflict upon an
-enemy during each round of an attack.</para>
+<para>攻撃(Str)は各ラウンドの攻撃で与えるダメージの量です。</para>
 
-<para>Cost is the number of rounds needed for a city to produce
-the piece.</para>
+<para>コスト(Cost)は都市でそのユニットを生成するまでに必要なラウンド数です。</para>
 
-<para>The number in parenthesis is the cost for a city to
-produce the first unit.</para>
+<para>カッコ内の数値はその都市で最初のユニットを生成するまでのコストです。</para>
 
-<para>Each piece has certain advantages associated with it that
-can make it useful.  One of the primary strategic aspects
-of this game is deciding which pieces will be produced
-and in what quantities.</para>
+<para>ユニットにはそれぞれ特徴があります。
+このゲームの戦略上の重要な問題の1つは、どのユニットをどれだけ生成すべきかです。</para>
 
-<para><emphasis remap='B'>Armies</emphasis> can only move on land, and
-are the only piece that can move on land.  Only armies can capture
-cities.  This means that you must produce armies in order to win the
-game.  Armies have a 50% chance of capturing a city when they attack.
-(Attacking one's own city results in the army's destruction.  Armies
-that move onto the sea will drown.  Armies can attack objects at sea,
-but even if they win, they will drown.)  Armies can be carried by
-troop transports.  If an army is moved onto a troop transport, then
-whenever the transport is moved, the army will be moved with the
-transport.  You cannot attack any piece at sea while on a
-transport.</para>
+<para><emphasis remap='B'>地上部隊(Army)</emphasis>は陸のみを移動できる、そして陸のみを移動する唯一のユニットです。
+地上部隊のみが都市を占領できます。
+つまり、ゲームに勝つためには地上部隊を生成しなければなりません。
+地上部隊は都市を攻撃したとき、50%の確率で占領することができます。
+(自分の都市を攻撃すると地上部隊は破壊されます。
+地上部隊は海に入るとおぼれてしまいます。
+地上部隊は海のユニットを攻撃できますが、たとえ勝利してもおぼれます。)
+地上部隊は輸送艦で運ぶことができます。
+地上部隊が輸送艦の上に移動したならば、輸送艦が移動すると、地上部隊も輸送艦と一緒に移動します。
+輸送されている間は、地上部隊は海上のユニットを攻撃できません。</para>
 
-<para><emphasis remap='B'>Fighters</emphasis> move over both land and
-sea, and they move 8 squares per round.  Their high speed and great
-mobility make fighters ideal for exploring.  However, fighters must
-periodically land at user-owned cities for refueling.  A fighter can
-travel 32 squares without refueling.  Fighters are also shot down if
-they attempt to fly over a city which is not owned by the user.</para>
+<para><emphasis remap='B'>戦闘機(Fighter)</emphasis>は陸と海の両方を移動でき、そして1ラウンドで8マス移動できます。
+高速性と優れた移動力を持つ戦闘機は探索に適しています。
+しかし、戦闘機は定期的に自分の都市に着地して燃料を補充しなければなりません。
+戦闘機は補給なしで32マス移動することができます。
+また、戦闘機は自分のものでない都市を通過しようとすると撃墜されてしまいます。</para>
 
-<para><emphasis remap='B'>Patrol boats</emphasis> are fast but lightly
-armored.  Therefore they are useful for patrolling ocean waters and
-exploring.  In an attack against a stronger boat, however, patrol
-boats will suffer heavy casualties.</para>
+<para><emphasis remap='B'>哨戒艇(Patrol boat)</emphasis>は高速ですが軽武装の艦船です。
+よって、このユニットは海の哨戒と探索に適しています。
+しかし、より強い艦船と戦うと、哨戒艇は大きな打撃を受けるでしょう。</para>
 
-<para><emphasis remap='B'>Destroyers</emphasis> are fairly heavily
-armored and reasonably quick to produce.  Thus they are useful for
-destroying enemy transports which may be trying to spread the enemy
-across the face of the world.</para>
+<para><emphasis remap='B'>駆逐艦(Destroyers)</emphasis>はやや重武装で、比較的早く生産できる艦船です。
+よって、世界中に広がろうとする敵の輸送艦を破壊するのに適しています。</para>
 
-<para>When a <emphasis remap='B'>submarine</emphasis> scores a hit, 3
-hits are exacted instead of 1.  Thus submarines can inflict heavy
-damage in a fight against heavily armored boats.  Notice that healthy
-submarines will typically defeat healthy destroyers two-thirds of the
-time.  However, a submarine will defeat a fighter about two-thirds of
-the time, while a destroyer will defeat a fighter three-fourths of the
-time.</para>
+<para><emphasis remap='B'>潜水艦(Submarine)</emphasis>の攻撃が命中すると、1ではなく3のヒットポイントを奪えます。
+よって、潜水艦は重武装した敵の艦船に大打撃を与えることができます。
+無傷の潜水艦は無傷の駆逐艦を2/3の確率で破壊できることに注目してください。
+しかし、潜水艦が戦闘機を破壊できる確率は2/3ですが、駆逐艦は戦闘機を3/4の確率で破壊できます。</para>
 
-<para><emphasis remap='B'>Troop transports</emphasis> are the only
-pieces that can carry armies.  A maximum of six armies can be carried
-by a transport.  On any world containing a reasonable amount of water,
-transports will be a critical resource in winning the game.  Notice
-that the weakness of transports implies they need protection from
-stronger ships.</para>
+<para><emphasis remap='B'>輸送艦(Troop transport)</emphasis>は地上部隊を運べる唯一のユニットです。
+1ユニットの輸送艦で最大6ユニットの地上部隊を運ぶことができます。
+海の多い世界では、輸送はゲームの勝敗を決める重要な問題となります。
+輸送艦は弱く、より強い艦船で護衛する必要があるので注意してください。</para>
 
-<para><emphasis remap='B'>Aircraft carriers</emphasis> are the only
-ships that can carry fighters.  Carriers carry a maximum of the number
-of hits left of fighters.  Fighters are refueled when they land on a
-carrier.</para>
+<para><emphasis remap='B'>空母(Aircraft carrier)</emphasis>は戦闘機を運べる唯一の艦船です。
+空母は残りヒットポイントの数だけ戦闘機を運ぶことができます。
+戦闘機は空母に着艦すると燃料が補充されます。</para>
 
-<para><emphasis remap='B'>Battleships</emphasis> are similar to
-destroyers except that they are much stronger.</para>
-<para><emphasis remap='B'>Satellites</emphasis> are only useful for reconnaissance.  They can not
-be attacked.  They are launched in a random diagonal orbit, and
-stay up for 50 turns.  They can see one square farther than other
-objects.</para>
+<para><emphasis remap='B'>戦艦(Battleship)</emphasis>はより強力であることを除けば駆逐艦と同じです。</para>
 
-<para>All ships can move only on the sea.  Ships can also dock in a
-user-owned city.  Docked ships have damage repaired at the
-rate of 1 hit per turn.  Ships which have suffered a lot
-of damage will move more slowly.</para>
+<para><emphasis remap='B'>人工衛星(Satellite)</emphasis>は探索しかできません。
+人工衛星は攻撃されません。
+人工衛星はランダムな角度に打ち上げられ、50ターン活動します。
+人工衛星は他のユニットより1マス広く探索できます。</para>
 
-<para>Because of their ability to be repaired, ships with lots of hits
-such as Carriers and Battleships have an additional advantage.  After
-suffering minor damage while destroying enemy shipping, these ships
-can sail back to port and be quickly repaired before the enemy has
-time to replenish her destroyed shipping.</para>
+<para>全ての艦船ユニットは海上のみ移動できます。
+艦船は自分の都市に入港することもできます。
+入港すると1ターンにつき1ヒットポイントのダメージを回復できます。
+艦船は大ダメージを受けると移動が遅くなります。</para>
 
-<para>The following table gives the probability that the piece listed
-on the side will defeat the piece listed at the top in a battle.
-(The table assumes that both pieces are undamaged.)</para>
+<para>この回復能力があるため、空母や戦艦のようなヒットポイントの多い艦船は有利です。
+敵の艦船を破壊する途中で受けたダメージが小さいならば、これらの艦船は都市に戻り、敵が破壊された艦船を補充する時間を与えずにすばやく回復することができます。</para>
+
+<para>次の表は、戦闘で横のユニットが縦のユニットに勝利する確率を示しています。
+(両者ともダメージを受けていないと仮定します。)</para>
 
 <informaltable pgwide='0' frame='all'>
   <tgroup cols='6' align='center'>
@@ -402,323 +360,280 @@ on the side will defeat the piece listed at the top in a battle.
   </tgroup>
 </informaltable>
 
-<para>Notice, however, that when a ship has been damaged, the odds of
-being defeated can go up quite a bit.  For example, a healthy
-submarine has a 25% chance of defeating a battleship that has
-had one hit of damage done to it, and a healthy submarine has
-a 50% chance of defeating a carrier which has suffered two hits
-of damage.</para>
+<para>しかし、艦船がダメージを受けている場合は、この確率が変化するので注意してください。
+例えば、無傷の潜水艦は1のダメージを受けた戦艦に25%の確率で勝利でき、無傷の潜水艦は2のダメージを受けた空母に50%の確率で勝利できます。</para>
 </refsect1>
 
-<refsect1 id='movement_functions'><title>MOVEMENT FUNCTIONS</title>
+<refsect1 id='movement_functions'><title>任務</title>
 
-<para>There are a variety of movement functions.  The movement functions
-of pieces can be specified in user mode and edit mode.
-Cities can have movement functions set for each type of piece.
-When a movement function for a type of pieces is set for a city,
-then every time that type of piece appears in the city, the piece
-will acquire that movement function.  Be forewarned that moving
-loaded transports or loaded carriers into a city can have undesirable
-side effects.</para>
+<para>任務(function)には様々なものが存在します。
+ユニットの任務はユーザモードとエディットモードで設定できます。
+都市にユニットごとの任務を設定することもできます。
+都市にユニットの種類ごとの任務を設定すると、都市で新しいユニットが生産されるたびにユニットに任務が設定されます。
+輸送中の輸送艦や、戦闘機を載せた空母が都市に入ると、望まない副作用があるので注意してください。</para>
 
-<para>Normally, when a movement
-function has been specified, the piece will continue moving according to
-that function until one of the following happen:</para>
+<para>通常、一度任務を設定すると、ユニットは次のことが発生するまでその任務に従って行動し続けます:</para>
 
 <itemizedlist>
   <listitem>
-<para>An enemy piece or unowned city appears next to the piece.  In this case
-the piece will be completely awoken, unless its movement function has
-been set to a specific destination.
-Armies on ships and pieces inside
-cities will not be awoken if the enemy piece is gone by the time it is
-their turn to move.</para>
+<para>移動先に敵のユニットまたは占領していない都市があるとき。
+この場合、指定の方向への移動以外は、ユニットの任務は完全に解除されます。
+輸送中の地上部隊と都市内のユニットは、もし行動するときに敵のユニットがいなくなっていれば、任務は解除されません。</para>
   </listitem>
   <listitem>
-<para>You explicitly awaken the piece.</para>
+<para>あなたが任務の解除を指示したとき。</para>
   </listitem>
   <listitem>
-<para>The piece can no longer move in accordance with its programmed function.
-In this case, the piece will awaken <emphasis remap='I'>temporarily</emphasis>.  You will be asked
-to move the piece at which time you may awaken it.</para>
+<para>そのユニットが任務された行動を続けられないとき。
+この場合、そのユニットは<emphasis remap='I'>一時的に</emphasis>任務が解除され、ユニットの移動方向を尋ねられます。
+</para>
   </listitem>
   <listitem>
-<para>The piece is a fighter which has just enough fuel (plus a small reserve)
-to get to the nearest city.
-In this case,
-the piece will awaken completely, unless its movement function has
-been set to a specific destination, or its movement function has been
-set to <emphasis remap='I'>land</emphasis>.</para>
+<para>戦闘機ユニットの燃料が最も近い都市に移動できる最小(と少しの余裕)の量になったとき。
+この場合、移動先を指示するか、<emphasis remap='I'>着地(Land)</emphasis>を指示するまでユニットの任務は解除された状態になります。</para>
   </listitem>
 </itemizedlist>
-<para>The rationale behind this complexity is that fighters must be awoken
-completely before they are out of range of a city
-to prevent one from accidentally forgetting to waken the
-fighter and then watching it fly off to its doom.  However, it is presumed
-that when a path is set for the fighter, the fighter is not in danger of
-running out of fuel.</para>
-<para>Pieces do not completely awaken when their function has been set to a
-destination because it is slightly time consuming to reset the destination,
-but very simple (one keystroke) to wake the piece.</para>
-<para>The movement functions are:</para>
+<para>この複雑さの背後にある考え方は、戦闘機の任務の解除を忘れて墜落する前に、完全に任務を解除されなければならないというものです。
+しかし、戦闘機の方向が設定されると、その戦闘機は燃料切れの危険がないとみなしています。</para>
+<para>移動方向が設定されたユニットは、方向がリセットされてしまうのは無駄であるため、任務は完全に解除されません。
+しかし、解除することは簡単です(キーを1回押す)。</para>
+<para>任務には次のものがあります:</para>
 <variablelist>
   <varlistentry>
-  <term><emphasis remap='B'>Attack</emphasis></term>
+  <term><emphasis remap='B'>攻撃(Attack)</emphasis></term>
   <listitem>
-<para>This function applies only to armies.  When this function is set,
-the army will move toward the nearest enemy city, unowned city, or
-enemy army.  This is useful when fighting off an invading enemy or
-taking over a new continent.  When an army is set to this mode,
-it will also explore nearby territory.  This tends to make
-the "grope" movement mode pretty useless.</para>
+<para>この任務は地上部隊のみ可能です。
+この任務が設定されると、地上部隊は最も近い敵の都市、中立の都市、または敵の地上部隊に向かって移動します。
+これは進攻する敵を撃退する場合や、新しい領土を獲得する場合に便利です。
+この任務が設定された地上部隊は、近くの領域の探索も行います。
+そのため、「探索(grope)」任務はあまり使う機会がありません。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Awake</emphasis></term>
+  <term><emphasis remap='B'>解除(Awake)</emphasis></term>
   <listitem>
-<para>When pieces are awake, you will be asked for the direction in which
-the piece should move on each turn.</para>
+<para>任務が解除されると、ユニットは毎ターン方向を尋ねてきます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Fill</emphasis></term>
+  <term><emphasis remap='B'>搭載(Fill)</emphasis></term>
   <listitem>
-<para>This function applies to carriers and transports.  When this function is
-specified, these ships sleep until they have been filled with fighters or
-armies respectively.</para>
+<para>この任務は空母と輸送艦に対して可能です。
+この任務が設定されると、艦船が戦闘機または地上部隊でいっぱいになるまで留まります。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Grope</emphasis></term>
+  <term><emphasis remap='B'>探索(Grope)</emphasis></term>
   <listitem>
-<para>This function causes a piece to explore.  The piece heads toward
-the nearest unseen square of the map on each of its moves.  Some
-attempt is made to explore in an optimal fashion.</para>
+<para>この任務はユニットに探索させます。
+ユニットはそれぞれマップ上の最も近い未探索の区域へ向かいます。
+統計的に最適な探索を行うためのいくつかの試みが行われています。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Land</emphasis></term>
+  <term><emphasis remap='B'>着地(Land)</emphasis></term>
   <listitem>
-<para>This function applies to fighters and causes the fighter to head toward
-the nearest transport or carrier.</para>
+<para>この戦闘機への任務は、戦闘機を最も近い都市か空母へと向かわせます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Random</emphasis></term>
+  <term><emphasis remap='B'>ランダム(Random)</emphasis></term>
   <listitem>
-<para>This movement function causes a piece to move at random to an adjacent
-empty square.</para>
+<para>この任務はユニットを隣の空いたマスへランダムに移動させます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Sentry</emphasis></term>
+  <term><emphasis remap='B'>防衛(Sentry)</emphasis></term>
   <listitem>
-<para>This movement function puts a piece to sleep.
-The function of a city cannot be set to 'sleep'.</para>
+<para>この任務はユニットを静止させます。
+都市上ではこの任務で「静止」させることはできません。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Transport</emphasis></term>
+  <term><emphasis remap='B'>搭乗(Transport)</emphasis></term>
   <listitem>
-<para>This movement function only works on armies.  The army sleeps until
-an unfull transport passes by, at which point the army wakes up and
-boards the transport.</para>
+<para>この任務は地上部隊のみ可能です。
+地上部隊は近くを満杯でない輸送艦が来るまで静止し、輸送艦が来ると地上部隊は動き出し輸送艦に乗ります。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Upgrade</emphasis></term>
+  <term><emphasis remap='B'>修理(Upgrade)</emphasis></term>
   <listitem>
-<para>This movement function only works with ships.  The ship will move
-to the nearest owned city and remain there until it is repaired.</para>
+<para>この任務は艦船のみ可能です。
+艦船は最も近い自分の都市へ移動し、修理されるまで待ちます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>&lt;dir&gt;</emphasis></term>
+  <term><emphasis remap='B'>&lt;方向&gt;</emphasis></term>
   <listitem>
-<para>Pieces can be set to move in a specified direction.</para>
+<para>ユニットの移動方向を設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>&lt;dest&gt;</emphasis></term>
+  <term><emphasis remap='B'>&lt;目的地&gt;</emphasis></term>
   <listitem>
-<para>Pieces can be set to move toward a specified square.  In this movement
-mode, pieces take a shortest path toward the destination.  Pieces moving
-in accordance with this function prefer diagonal moves that explore
-territory.  Because of this, the movement of the piece may be
-non-intuitive.</para>
+<para>ユニットを指定の場所へ移動させさせます。
+この移動モードでは、ユニットは目的地へ最短の経路で移動します。
+この任務を設定されたユニットは斜めに進んで探索することが多くなります。
+そのため、ユニットの移動は直感に反するかもしれません。</para>
   </listitem>
   </varlistentry>
 </variablelist>
 
-<para>As examples of how to use these movement functions, typically
-when I have a new city on a continent, I set the Army function of the
-city to <emphasis remap='I'>attack</emphasis>.  Whenever an army is
-produced, it merrily goes off on its way exploring the continent and
-moving towards unowned cities or enemy armies or cities.</para>
+<para>任務の使い方の一例は、新しい大陸の都市を獲得したとき、その都市の地上部隊の任務を<emphasis remap='I'>攻撃</emphasis>にすることです。
+地上部隊が生産されるたびに、次々と大陸を探索し、まだ手に入れていない都市や敵の地上部隊や都市に向かって移動します。</para>
 
-<para>I frequently set the ship functions for cities that are far from the
-front to automatically move ships towards the front.</para>
+<para>都市の艦船の任務は、遠くにある都市から前線に艦船を自動的に移動させるためによく設定されます。</para>
 
-<para>When I have armies on a continent, but there is nothing to
-explore or attack, I move the army to the shore and use the <emphasis
-remap='I'>transport</emphasis> function to have that army hop aboard
-the first passing transport.</para>
+<para>
+大陸に地上部隊がいても探索や攻撃の対象がないときは、海辺まで移動させ、<emphasis remap='I'>搭乗</emphasis>任務を設定し、輸送艦が通過したとき乗るようにします。</para>
 </refsect1>
 
-<refsect1 id='commands'><title>COMMANDS</title>
+<refsect1 id='commands'><title>コマンド</title>
 
-<para>There are three command modes.  The first of these is "command mode".
-In this mode, you give commands that affect the game as a whole.
-In the second mode, "move mode", you give commands to move your
-pieces.  The third mode is "edit mode", and in this mode you can
-edit the functions of your pieces and examine various portions of
-the map.</para>
+<para>3つのコマンドモードがあります。
+1つ目は「コマンドモード」です。
+このモードはゲーム全体に影響を与えます。
+2つ目のモード「移動モード」はあなたのユニットに命令を与えます。
+3つ目のモードは「エディットモード」で、ユニットの任務を編集や、マップの様々な場所を見ることができます。</para>
 
-<para>All commands are one character long.  The full mnemonic names
-are listed below as a memorization aid.  The mnemonics are somewhat
-contrived because there are so few characters in the English language.
-Too bad this program isn't written in Japanese, neh?</para>
+<para>全てのコマンドの長さは1文字です。
+覚えられるように完全な命令名の一覧が下にあります。
+命令名には不自然なものもありますが、それは英語のアルファベットが少ないためです。
+このプログラムが日本語で書かれていないのが残念ですね?</para>
 
-<para>In all command modes, typing "H" will print out a screen of help
-information, and typing &lt;ctrl-L&gt; will redraw the screen.</para>
+<para>全てのコマンドモードで、"H"を押すとヘルプが表示され、&lt;ctrl-L&gt;を押すと画面が再描画されます。</para>
 </refsect1>
 
-<refsect1 id='command_mode'><title>COMMAND MODE</title>
+<refsect1 id='command_mode'><title>コマンドモード</title>
 
-<para>In command mode, the computer will prompt you for your orders.
-The following commands can be given at this time:</para>
+<para>コマンドモードでは、コンピュータはあなたの命令を待ちます。
+このとき次のコマンドを受け付けます:</para>
 
 <variablelist>
   <varlistentry>
-  <term><emphasis remap='B'>Automove</emphasis></term>
+  <term><emphasis remap='B'>Automove(移動モード)</emphasis></term>
   <listitem>
-<para>Enter automove mode.  This command begins a new round of movement.
-You will remain in move mode after each of the computer's turns.
-(In move mode, the "O" command will return you to command mode
-after the computer finishes its next turn.</para>
+<para>移動モードへ移行します。
+このコマンドで新しいラウンドが始まります。
+コンピュータのターンの後も移動モードが継続されます。
+(移動モードでは、"O"コマンドでコンピュータのターンが終わった後でコマンドモードに戻ります。)</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>City</emphasis></term>
+  <term><emphasis remap='B'>City(都市)</emphasis></term>
   <listitem>
-<para>Give the computer a random unowned city.  This command is useful if you
-find that the computer is getting too easy to beat.</para>
+<para>コンピュータにランダムな中立都市を与えます。
+このコマンドはコンピュータが弱すぎると思ったときに便利です。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Date</emphasis></term>
+  <term><emphasis remap='B'>Date(日時)</emphasis></term>
   <listitem>
-<para>The current round is displayed.</para>
+<para>現在のラウンドを表示します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Examine</emphasis></term>
+  <term><emphasis remap='B'>Examine(調査)</emphasis></term>
   <listitem>
-<para>Examine the enemy's map.  This command is only valid after the computer
-has resigned.</para>
+<para>敵のマップを調査します。
+このコマンドはコンピュータが降伏した後にのみ有効です。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>File</emphasis></term>
+  <term><emphasis remap='B'>File(ファイル)</emphasis></term>
   <listitem>
-<para>Print a copy of the map to the specified file.</para>
+<para>マップを指定したファイルに書き込みます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Give</emphasis></term>
+  <term><emphasis remap='B'>Give(与える)</emphasis></term>
   <listitem>
-<para>This command gives the computer a free move.</para>
+<para>このコマンドはコンピュータに手番を与えます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><emphasis remap='B'>J</emphasis></term>
   <listitem>
-<para>Enter edit mode where you can examine and change the functions
-associated with your pieces and cities.</para>
+<para>エディットモードへ移行し、調査やあなたのユニットや都市の任務を変更できるようにします。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Move</emphasis></term>
+  <term><emphasis remap='B'>Move(チェンジ)</emphasis></term>
   <listitem>
-<para>Enter move mode for a single round.</para>
+<para>1ラウンドだけ移動モードへ移行します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><emphasis remap='B'>N</emphasis></term>
   <listitem>
-<para>Give the computer the number of free moves you specify.</para>
+<para>コンピュータに指定した回数の手番を与えます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Print</emphasis></term>
+  <term><emphasis remap='B'>Print(表示)</emphasis></term>
   <listitem>
-<para>Display a sector on the screen.</para>
+<para>セクターを画面に表示します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Quit</emphasis></term>
+  <term><emphasis remap='B'>Quit(終了)</emphasis></term>
   <listitem>
-<para>Quit the game.</para>
+<para>ゲームを終了します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Restore</emphasis></term>
+  <term><emphasis remap='B'>Restore(復帰)</emphasis></term>
   <listitem>
-<para>Restore the game from empsave.dat.</para>
+<para>empsave.datからゲームを復帰させます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Save</emphasis></term>
+  <term><emphasis remap='B'>Save(保存)</emphasis></term>
   <listitem>
-<para>Save the game in empsave.dat.</para>
+<para>ゲームをempsave.datに保存します。
+</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Trace</emphasis></term>
+  <term><emphasis remap='B'>Trace(トレース)</emphasis></term>
   <listitem>
-<para>This command toggles a flag.  When the flag is set,
-after each move, either yours or the computer's,
-a picture of the world is written out to the file
-'empmovie.dat'.  <emphasis remap='B'>Watch out!  This command produces lots of
-output.</emphasis></para>
+<para>このコマンドはフラグをセットします。
+フラグがセットされていると、あなたとコンピュータの手番の後、ゲームの状態が'empmovie.dat'ファイルに書き込まれます。
+<emphasis remap='B'>注意! このコマンドはたくさんのファイルを生成します。</emphasis></para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Watch</emphasis></term>
+  <term><emphasis remap='B'>Watch(観戦)</emphasis></term>
   <listitem>
-<para>This command allows you to watch a saved movie.
-The movie is displayed in a condensed version so that
-it will fit on a single screen, so the output may be
-a little confusing.  This command is only legal if the
-computer resigns.  If you lose the game, you cannot replay
-a movie to learn the secrets of how the computer beat you.
-Nor can you replay a movie to find out the current positions
-of the computer's pieces.  When replaying a movie, it is
-recommended that you use the <option>-d</option> option to set the delay
-to around 2000 milliseconds or so.  Otherwise the screen will be
-updated too quickly for you to really grasp what is going on.</para>
+<para>このコマンドは保存された棋譜を再生します。
+棋譜は1画面に収まるように縮小されているため、再生はやや分かりにくいものになります。
+このコマンドはコンピュータが降伏した後にのみ有効です。
+あなたが負けた場合は、棋譜を再生してコンピュータがあなたを打ち負かした秘密を知ることはできません。
+また、再生でコンピュータのユニットの現在の位置を知ることもできません。
+棋譜の再生中は、<option>-d</option>オプションで遅延時間を2000ミリ秒程度に設定することを薦めます。
+そうしないと画面の更新が早すぎて何が起こっているかわからないでしょう。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Zoom</emphasis></term>
+  <term><emphasis remap='B'>Zoom(ズーム)</emphasis></term>
   <listitem>
-<para>Display a condensed version of the map on the screen.  The user map is
-divided into small rectangles.  Each rectangle is displayed as one square
-on the screen.  If there is a city in a rectangle, then it
-is displayed.  Otherwise enemy pieces are displayed, then user pieces,
-then land, then water, and then unexplored territory.  When pieces are
-displayed, ships are preferred to fighters and armies.</para>
+<para>画面に縮小されたマップを表示します。
+マップはいくつもの小さな長方形に区切られます。
+これらの長方形は画面上で1つのマスとして表示されます。
+もし長方形内に都市があればそれが表示されます。
+そうでなければ、敵のユニットがあれば表示され、次はあなたのユニット、陸、海、未探索の領域の順で表示されます。
+ユニットは艦船が戦闘機や陸上部隊より優先されて表示されます。</para>
   </listitem>
   </varlistentry>
 </variablelist>
 </refsect1>
 
-<refsect1 id='move_mode'><title>MOVE MODE</title>
+<refsect1 id='move_mode'><title>移動モード</title>
 
-<para>In move mode, the cursor will appear on the screen at the position
-of each piece that needs to be moved.  You can then give commands
-to move the piece.  Directions to move are specified by the
-following keys:</para>
+<para>移動モードでは、画面上の移動が必要な各ユニット上にカーソルが現れます。
+その後、ユニットに移動コマンドを与えられるようになります。
+移動の方向は次のキーで指定します:</para>
 
 <literallayout>
 <emphasis remap='5'>
@@ -728,356 +643,321 @@ following keys:</para>
 </emphasis>
 </literallayout>
 
-<para>The arrow and keypad keys on your terminal, if any, should also
-work.</para>
+<para>あなたの端末にカーソルキーとテンキーがあればそれも有効のはずです。</para>
 
-<para>These keys move in the direction of the key from S.  The
-characters are not echoed and only 1 character is
-accepted, so there is no need for a &lt;Return&gt;.  Hit the &lt;Space&gt;
-bar if you want the piece to stay put.</para>
+<para>これらのキーは、Sキーから見た方向へ移動させます。
+これらの文字はエコーせず、また1文字のみ受け付けます。
+よって&lt;リターン&gt;の必要はありません。
+その場にとどまりたい場合は&lt;スペース&gt;バーを押してください。</para>
 
-<para>Other commands are:</para>
+<para>他のコマンドは:</para>
 <variablelist>
   <varlistentry>
-  <term><emphasis remap='B'>Build</emphasis></term>
+  <term><emphasis remap='B'>Build(構築)</emphasis></term>
   <listitem>
-<para>Change the production of a city.</para>
+<para>都市の生産を変更します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Fill</emphasis></term>
+  <term><emphasis remap='B'>Fill(搭載)</emphasis></term>
   <listitem>
-<para>Set the function of a troop transport or aircraft carrier to
-<emphasis remap='I'>fill</emphasis>.</para>
+<para>輸送艦または空母の任務を<emphasis remap='I'>搭載</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Grope</emphasis></term>
+  <term><emphasis remap='B'>Grope(探索)</emphasis></term>
   <listitem>
-<para>Set the function of a piece to <emphasis remap='I'>grope</emphasis>.</para>
+<para>ユニットの任務を<emphasis remap='I'>探索</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>I</emphasis><emphasis remap='I'>dir</emphasis></term>
+  <term><emphasis remap='B'>I</emphasis><emphasis remap='I'>方向</emphasis></term>
   <listitem>
-<para>Set the direction for a piece to move.</para>
+<para>ユニットの移動方向を設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><emphasis remap='B'>J</emphasis></term>
   <listitem>
-<para>Enter edit mode.</para>
+<para>エディットモードへ移行します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Kill</emphasis></term>
+  <term><emphasis remap='B'>Kill(解除)</emphasis></term>
   <listitem>
-<para>Wake up the piece.  If the piece is a transport or carrier,
-pieces on board will not be awoken.</para>
+<para>ユニットの任務を解除します。
+もしそのユニットが輸送艦または空母ならば、搭載されたユニットの任務は解除されません。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Land</emphasis></term>
+  <term><emphasis remap='B'>Land(着地)</emphasis></term>
   <listitem>
-<para>Set a fighter's function to <emphasis remap='I'>land</emphasis>.</para>
+<para>戦闘機の任務を<emphasis remap='I'>着地</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Out</emphasis></term>
+  <term><emphasis remap='B'>Out(戻る)</emphasis></term>
   <listitem>
-<para>Cancel automove mode.  At the end of the round, you will
-be placed in command mode.</para>
+<para>移動モードを中断します。
+ラウンドが終わるとコマンドモードになります。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Print</emphasis></term>
+  <term><emphasis remap='B'>Print(表示)</emphasis></term>
   <listitem>
-<para>Redraw the screen.</para>
+<para>画面を再描画する。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Random</emphasis></term>
+  <term><emphasis remap='B'>Random(ランダム)</emphasis></term>
   <listitem>
-<para>Set a piece's function to <emphasis remap='I'>random</emphasis>.</para>
+<para>ユニットの任務を<emphasis remap='I'>ランダム</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Sentry</emphasis></term>
+  <term><emphasis remap='B'>Sentry(防衛)</emphasis></term>
   <listitem>
-<para>Set a piece's function to <emphasis remap='I'>sentry</emphasis>.</para>
+<para>ユニットの任務を<emphasis remap='I'>防衛</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Transport</emphasis></term>
+  <term><emphasis remap='B'>Transport(搭乗)</emphasis></term>
   <listitem>
-<para>Set an army's function to <emphasis remap='I'>transport</emphasis>.</para>
+<para>地上部隊の任務を<emphasis remap='I'>搭乗</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Upgrade</emphasis></term>
+  <term><emphasis remap='B'>Upgrade(修理)</emphasis></term>
   <listitem>
-<para>Set a ship's function to <emphasis remap='I'>upgrade</emphasis>.</para>
+<para>艦船の任務を<emphasis remap='I'>修理</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>V</emphasis><emphasis remap='I'>piece func</emphasis></term>
+  <term><emphasis remap='B'>V</emphasis><emphasis remap='I'>ユニット 任務</emphasis></term>
   <listitem>
-<para>Set the city movement function for the specified piece
-to the specified function.  For example, typing "VAY" would
-set the city movement function for armies to <emphasis remap='I'>attack</emphasis>.  Whenever
-an army is produced in the city (or whenever a loaded transport
-enters the city), the army's movement function
-would be set to <emphasis remap='I'>attack</emphasis>.</para>
+<para>
+都市にユニットの任務を設定します。
+例えば、"VAY"と入力すると、都市の地上部隊の任務は<emphasis remap='I'>攻撃</emphasis>になります。
+この都市で地上部隊が生産されると(または地上部隊を乗せた輸送艦が都市に入ると)、地上部隊の任務が<emphasis remap='I'>攻撃</emphasis>に設定されます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><emphasis remap='B'>Y</emphasis></term>
   <listitem>
-<para>Set an army's function to <emphasis remap='I'>attack</emphasis>.</para>
+<para>地上部隊の任務を<emphasis remap='I'>攻撃</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><emphasis remap='B'>?</emphasis></term>
   <listitem>
-<para>Display information about the piece.  The
-function, hits left, range, and number of items on board are
-displayed.</para>
+<para>ユニットの情報を表示します。
+任務、残りヒットポイント、燃料、輸送中のユニット数が表示されます。</para>
   </listitem>
   </varlistentry>
 </variablelist>
 
-<para>Attacking something is accomplished by  moving  onto  the
-square of the unit you wish to attack.  Hits are traded
-off at 50% probability of a hit landing on one or the
-other units until one unit is totally destroyed.  There
-is only 1 possible winner.</para>
+<para>攻撃は攻撃したい相手のマスに移動することで行います。
+ヒット率は50%で、攻撃した側とされた側が交互にどちらかが完全に破壊されるまで行います。
+勝者はどちらか一方のみです。</para>
 
-<para>You are "allowed" to do <emphasis remap='B'>fatal</emphasis>
-things like attack your own cities or other pieces.  If you try to
-make a fatal move, the computer will warn you and give you a chance to
-change your mind.</para>
+<para>味方の都市やユニットへの攻撃など<emphasis remap='B'>致命的な</emphasis>行為も「許可」されています。
+致命的な行為を行おうとすると、コンピュータは警告しやり直す機会を与えます。</para>
 
-<para>You cannot move onto the edge of the world.</para>
+<para>マップの端へ移動することはできません。</para>
 </refsect1>
 
-<refsect1 id='edit_mode'><title>EDIT MODE</title>
+<refsect1 id='edit_mode'><title>エディットモード</title>
 
-<para>In edit mode, you can move around the world and examine pieces
-or assign them new functions.
-To move the cursor around, use the standard direction
-keys.
-Other commands are:</para>
+<para>エディットモードでは、世界中を見渡し、ユニットを調べ、新しい任務を設定することができます。
+カーソルは通常の方向キーで動かせます。
+他のコマンドは:</para>
 
 <variablelist>
   <varlistentry>
-  <term><emphasis remap='B'>Build</emphasis></term>
+  <term><emphasis remap='B'>Build(構築)</emphasis></term>
   <listitem>
-<para>Change the production of the city under the cursor.
-The program will prompt for the new production, and you
-should respond with the key corresponding to the letter of the piece
-that you want produced.</para>
+<para>カーソルを合わせた都市の生産を変えます。
+プログラムは新しい生産を尋ねるので、生産したいユニットの文字のキーを押して答えます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Fill</emphasis></term>
+  <term><emphasis remap='B'>Fill(搭載)</emphasis></term>
   <listitem>
-<para>Set a transport's or carrier's function to <emphasis remap='I'>fill</emphasis>.</para>
+<para>輸送艦または空母の任務を<emphasis remap='I'>搭載</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Grope</emphasis></term>
+  <term><emphasis remap='B'>Grope(探索)</emphasis></term>
   <listitem>
-<para>Set a piece's function to <emphasis remap='I'>grope</emphasis>.</para>
+<para>ユニットの任務を<emphasis remap='I'>探索</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>I</emphasis><emphasis remap='I'>dir</emphasis></term>
+  <term><emphasis remap='B'>I</emphasis><emphasis remap='I'>方向</emphasis></term>
   <listitem>
-<para>Set the function of a piece (or city) to the specified direction.</para>
+<para>ユニット(または都市)の方向を設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Kill</emphasis></term>
+  <term><emphasis remap='B'>Kill(解除)</emphasis></term>
   <listitem>
-<para>Wake all pieces at the current location.  If the location is a city,
-the fighter path will also be canceled.</para>
+<para>その場の全てのユニットの任務を解除します。
+もしその場所が都市ならば、戦闘機の航路も解除されます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Mark</emphasis></term>
+  <term><emphasis remap='B'>Mark(選択)</emphasis></term>
   <listitem>
-<para>Select the piece or city at the current location.  This command
-is used with the "N" command.</para>
+<para>現在の場所のユニットまたは都市を選択します。
+このコマンドは"N"コマンドと一緒に使います。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><emphasis remap='B'>N</emphasis></term>
   <listitem>
-<para>Set the destination of the piece previously selected with the "M"
-command to the current square.</para>
+<para>"M"コマンドで選択したユニットの目的地を現在の場所に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Out</emphasis></term>
+  <term><emphasis remap='B'>Out(戻る)</emphasis></term>
   <listitem>
-<para>Exit edit mode.</para>
+<para>エディットモードを終了します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Print</emphasis><emphasis remap='I'>sector</emphasis></term>
+  <term><emphasis remap='B'>Print(表示)</emphasis><emphasis remap='I'>セクター</emphasis></term>
   <listitem>
-<para>Display a new sector of the map.  The map is divided into
-ten sectors of size 20 by 70.  Sector zero is in the upper-left
-corner of the map.  Sector four is in the lower-left corner of
-the map.  Sector five is in the upper-right corner, and sector
-nine is in the lower-right corner.</para>
+<para>セクターのマップを新たに表示します。
+マップは20マス×70マスの10のセクターに分かれています。
+セクター0がマップの左上、セクター4がマップの左下、セクター5が右上、そしてセクター9が右下です。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Random</emphasis></term>
+  <term><emphasis remap='B'>Random(ランダム)</emphasis></term>
   <listitem>
-<para>Set a piece to move randomly.</para>
+<para>ユニットがランダムに移動するようにします。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Sentry</emphasis></term>
+  <term><emphasis remap='B'>Sentry(防衛)</emphasis></term>
   <listitem>
-<para>Put a piece to sleep.</para>
+<para>ユニットが動かないようにします。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Transport</emphasis></term>
+  <term><emphasis remap='B'>Transport(搭乗)</emphasis></term>
   <listitem>
-<para>Set an army's function to <emphasis remap='I'>transport</emphasis>.</para>
+<para>地上部隊の任務を<emphasis remap='I'>搭乗</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>Upgrade</emphasis></term>
+  <term><emphasis remap='B'>Upgrade(修理)</emphasis></term>
   <listitem>
-<para>Set a ship's function to <emphasis remap='I'>upgrade</emphasis>.</para>
+<para>艦船の任務を<emphasis remap='I'>修理</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
-  <term><emphasis remap='B'>V</emphasis><emphasis remap='I'>piece func</emphasis></term>
+  <term><emphasis remap='B'>V</emphasis><emphasis remap='I'>ユニット 任務</emphasis></term>
   <listitem>
-<para>Set the city movement function for a piece.</para>
+<para>都市にユニットの任務を設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><emphasis remap='B'>Y</emphasis></term>
   <listitem>
-<para>Set an army's function to <emphasis remap='I'>attack</emphasis>.</para>
+<para>地上部隊の任務を<emphasis remap='I'>攻撃</emphasis>に設定します。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><emphasis remap='B'>?</emphasis></term>
   <listitem>
-<para>Display information about a piece or city.
-For a city, the production, time of completion of
-the next piece, movement functions, and the number of fighters and ships
-in the city are displayed.</para>
+<para>ユニットまたは都市の情報を表示します。
+都市ならば、生産、次のユニットが完成するまでの時間、任務、そしてその都市の戦闘機と艦船の数が表示されます。</para>
   </listitem>
   </varlistentry>
 </variablelist>
 
-<para>Note that you cannot directly affect anything inside a city with
-the editor.</para>
+<para>エディットモードでは都市内のユニットに直接影響を与えられないので注意してください。</para>
 
 </refsect1>
 
-<refsect1 id='hints'><title>HINTS</title>
-<para>After you have played this game for a while, you will probably
-find that the computer is immensely easy to beat.  Here are some
-ideas you can try that may make the game more interesting.</para>
+<refsect1 id='hints'><title>ヒント</title>
+<para>このゲームでしばらく遊ぶと、コンピュータに簡単に勝てることがわかるでしょう。
+このゲームをより面白くするいくつかのアイデアがあります。</para>
 
 <itemizedlist>
   <listitem>
-    <para>Give the computer one or more extra cities before starting
-    the game.</para>
+    <para>ゲームが始まる前にコンピュータに1つかそれ以上の都市を与える。</para>
   </listitem>
   <listitem>
-    <para>Try playing the game with a low smoothness value (try using the
-    -s2 or even -s0 option).</para>
+    <para>滑らかさの値を小さくする(-s2 か、さらに -s0 オプションを試してみる)。</para>
   </listitem>
   <listitem>
-    <para>When starting the game, the program will ask you what difficulty
-    level you want.  Here "difficulty level" is a misnomer.  To compute
-    a difficulty level, the program looks at each continent and counts
-    the number of cities on the continents.  A high "difficulty level"
-    gives the computer a large continent with many cities, while the
-    user gets a small continent with few cities.  A low "difficulty level"
-    has the opposite effect.  It may be the case that the computer will
-    play better when the "difficulty level" is low.  The reason for this
-    is that the computer is forced to move armies to multiple continents
-    early in the game.</para>
+    <para>ゲームを始めると、難易度を尋ねられます。
+    この「難易度」は必ずしも正しくありません。
+    プログラムは陸地と陸地の都市の数で難易度を決めています。
+    高「難易度」では、コンピュータに広い陸地と多くの都市が与えられ、ユーザには小さな陸地と少ない都市が与えられます。
+    低「難易度」はその逆になります。
+    「難易度」が低い場合の方がコンピュータがうまくプレーする場合もあります。
+    その理由は、この場合コンピュータはゲームの初期の段階で複数の陸地に地上部隊を展開することを強制されるためです。</para>
   </listitem>
 </itemizedlist>
 </refsect1>
 
-<refsect1 id='history'><title>HISTORY</title>
+<refsect1 id='history'><title>歴史</title>
 
-<para>According to 
-<ulink url='http://www.classicempire.com/history.html'>
-A Brief History of Empire </ulink>, the ancestral game was written by
-Walter Bright sometime in the early 1970s while he was a student at
-Caltech.  A copy leaked out of Caltech and was ported to DEC's VAX/VMS
-from the TOPS-10/20 FORTRAN sources available sometime around fall
-1979.  Craig Leres found the source code on a DECUS tape in 1983 and
-added support for different terminal types.</para>
+<para><ulink url='http://www.classicempire.com/history.html'>A Brief History of Empire</ulink>によると、このゲームの原型は1970年代初頭にカリフォルニア工科大学の学生Walter Brightによって作られました。
+コピーが大学から流出し、1979年秋頃にTOPS-10/20 FORTRANのソースコードが使えるDECのVAX/VMSに移植されました。
+1983年にCraig LeresはDECUSのテープからソースコードを発見し、様々な種類の端末に対応させました。</para>
 
-<para>Ed James got hold of the sources at Berkeley and converted
-portions of the code to C, mostly to use curses for the screen
-handling.  He published his modified sources on the net in December
-1986.  Because this game ran on VMS machines for so long, it has been
-known as VMS Empire.</para>
+<para>Ed Jamesはバークレーでソースコードを手に入れ、C言語に移植し、画面の操作の大半でcursesを使用するようにしました。
+1986年12月、彼は自分が修正したソースコードをネットで公開しました。
+このゲームは長い間VMSマシンで動いていたためVMS Empireとして知られています。</para>
 
-<para>In 1987 Chuck Simmons at Amdahl reverse-engineered the program
-and wrote a version completely in C.  In doing so, he modified the
-computer strategy, the commands, the piece types, many of the piece
-attributes, and the algorithm for creating maps.</para>
+<para>1987年、アムダール社のChuck Simmonsはプログラムを解析し、完全なC言語版を作成しました。
+その過程で、彼はコンピュータの戦略、コマンド、ユニットの種類、多くのユニットの特性、そしてマップ生成のアルゴリズムを修正しました。</para>
 
-<para>The various versions of this game were ancestral to later and
-better-known 4X (expand/explore/exploit/exterminate) games, including
-Civilization (1990) and Master of Orion (1993).</para>
+<para>このゲームの様々なバージョンは、後のCivilization (1990)やMaster of Orion (1993)などの4Xゲーム(expand/explore/exploit/exterminate)(探索/拡張/利用/排除)の原型となりました。</para>
 
-<para>In 1994 Eric Raymond colorized the game.</para>
+<para>1994年、Eric Raymondはこのゲームをカラー化しました。</para>
 </refsect1>
 
-<refsect1 id='files'><title>FILES</title>
+<refsect1 id='files'><title>ファイル</title>
 <variablelist>
   <varlistentry>
   <term><emphasis remap='I'>empsave.dat</emphasis></term>
   <listitem>
-<para>holds a backup of the game.  Whenever empire is run,
-it will reload any game in this file.</para>
+<para>ゲームのバックアップが保存されています。
+empireが実行されると、このファイルにゲームの状態が次々と書き込まれます。</para>
   </listitem>
   </varlistentry>
   <varlistentry>
   <term><emphasis remap='I'>empmovie.dat</emphasis></term>
   <listitem>
-<para>holds a history of the game so that the game can be replayed as
-a "movie".</para>
+<para>ゲームの履歴が保存され、「棋譜」として再生できるようになります。</para>
   </listitem>
   </varlistentry>
 </variablelist>
 </refsect1>
 
-<refsect1 id='bugs'><title>BUGS</title>
+<refsect1 id='bugs'><title>バグ</title>
 
-<para>No doubt numerous.</para>
+<para>間違いなく無数にあります。</para>
 
-<para>The savefile format changed incompatibly after version 1.13.</para>
+<para>保存ファイルはバージョン1.13以降は互換性がなくなっています。</para>
 
-<para>Satellites are not completely implemented.  You should be able to
-move to a square that contains a satellite, but the program won't
-let you.  Enemy satellites should not cause your pieces to awaken.</para>
+<para>人工衛星は完全には実装されていません。
+人工衛星のあるマスには移動できるべきですが、それはできません。
+敵の人工衛星はあなたのユニットの任務を解除しません。</para>
 </refsect1>
 
-<refsect1 id='authors'><title>AUTHORS</title>
-<para>Original game by Walter Bright.  Support for different terminal
-types added by Craig Leres.  Curses support added by Ed James.  C/Unix
-version written by Chuck Simmons. Colorization by Eric S. Raymond.
-Probability table corrected by Michael Self.</para>
+<refsect1 id='authors'><title>作者</title>
+<para>このゲームの原作者はWalter Brightです。
+Craig Leresは様々な種類の端末に対応させました。
+Ed Jamesはcursesに対応させました。
+Chuck SimmonsはC/Unix版を作成しました。
+Eric S. Raymondはカラーに対応させました。
+Michael Selfは確率表を訂正しました。</para>
 </refsect1>
 
 <refsect1 id='copyleft'><title>COPYLEFT</title>
@@ -1086,4 +966,3 @@ Probability table corrected by Michael Self.</para>
 and warranty information.</para>
 </refsect1>
 </refentry>
-

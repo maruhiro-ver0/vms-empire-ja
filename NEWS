@@ -67,64 +67,61 @@
 	I colorized and speed-tuned this and added a
 	save-interval option. 
 
-The rest of this history is Chuck Simmons's original notes.  Because
-there are so many other Empire games out there now (all descended from
-this one!), I've reverted to the VMS Empire name.
+この履歴の残りは、Chuck Simmonsによるオリジナルのメモである。
+現在は非常に多くのEmpireゲームが存在するが、全てVMS Empireにたどり着くためであ
+る(全てはこの子孫だ!)。
 
 					-- Eric S. Raymond
 
-History
+歴史
 
-	Apparently, this game was originally written outside of Digital,
-	probably at a university.  The game was ported to DEC's VAX/VMS
-	from the TOPS-10/20 FORTRAN sources available around fall 1979.
-	Ed James got hold of the sources at Berkeley and converted
-	portions of the code to C, mostly to use curses for the screen
-	handling.  He published his modified sources on the net in
-	December 1986.  Because this game ran on VMS machines for so
-        long, a previous version is known as VMS Empire.
+	このゲームのオリジナルはDigitalではなく、恐らく大学で書かれたもののよ
+	うだ。1979年秋頃にTOPS-10/20 FORTRANのソースコードが使えるDECのVAX/VMS
+	に移植された。
+	Ed Jamesはバークレーでソースコードを手に入れ、C言語に移植し、画面の操
+	作の大半でcursesを使用するようにした。
+	1986年12月、彼は自分が修正したソースコードをネットで公開した。このゲー
+	ムは長い間VMSマシンで動いていたためVMS Empireとして知られている。
 
-	In early 1987 I reverse engineered the program and wrote a
-	version completely written in C.  In doing this, I used lots
-	of structures and defined constants, and I attempted to make
-	the code flexible and easy to modify.  The algorithms used
-	in this C version are completely new, the names of the commands
-	have been changed to be more mnemonic, and new commands have
-	been implemented.  Only the format of the display is the same.
-        I suspect that many of my changes are slower and less
-        intelligently implemented than the originals.  Also, I have
-	not implemented some of the original functionality.
-	However, my hope is that the commented C sources I have written
-	will prove far easier to modify and enhance than the original
-        FORTRAN sources.  If you make changes for the better, by
-        all means send Ed James and I a copy.
+	1987年初頭、私はこのプログラムを解析し、完全なC言語版を作成した。その
+	途中、多くの構造体と定数を定義し、コードを柔軟で修正しやすいものにしよ
+	うと試みた。
+	このC言語版ではアルゴリズムは全て新しくなり、コマンド名は分かりやす
+	く、そして新しいコマンドも実装された。
+	元のままなのは画面の構成のみである。
+	私は、この多くの変更はオリジナルよりも遅く、そして実装も洗練されていな
+	いと思っている。
+	さらに、オリジナルの機能の一部を実装していない。
+	しかし、私が書いたコメント付きのCのソースコードは、オリジナルのFORTRAN
+	のソースコードよりも遥かに変更や拡張のしやすいものになったと考えてい
+	る。
+	もしあなたが改良したならば、ぜひEd Jamesと私にコピーを送って欲しい。
 
-	The basic game has been heavily modified.  I've changed the
-	types of objects built, modified the parameters on others,
-	and added lots of new kinds of movement functions.  Read
-	the man page for a complete description.
+	元のゲームの変更は困難なものであった。
+	私は生産できるユニットを変更し、その他のパラメータを修正し、さらに多く
+	の新しい任務を追加した。
+	完全な内容はマニュアルを読んで欲しい。
 
-	The file 'bugs' contains lots of ideas for enhancements,
-	and describes the bugs I haven't been able to find.
+	'bugs'ファイルには拡張のための多くのアイデアと、発見できなかったバグに
+	関する記述がある。
 
-Final Notes
+最後のメモ
 
-	Unfortunately, I have a rather powerful mainframe at my
-	disposal which is somewhere between 10 and 40 times as
-	fast as a 68020 based computer.  This means I can afford
-	to use extremely inefficient algorithms.  I suspect that
-	running this program on a smaller machine, such as a Sun
-	workstation or Vax will not be overly rewarding.  In particular,
-	the computer will take a very long time to move its pieces,
-	and it may not be desirable to save the game after every move.
-	(You mean your system doesn't write out 1/2 megabyte files in a
-	few milliseconds?)  This second problem is easily fixed, but
-	I don't yet have any good ideas for fixing the first problem.
+	不幸なことに、私にはかなり強力な、68020ベースのコンピュータよりも10か
+	ら40倍高速なメインフレームがある。
+	つまり、これは非常に非効率的なアルゴリズムを使えることを意味する。
+	このプログラムをより小規模なマシン、たとえばSun workstationやVaxでは満
+	足に動作しない恐れがある。
+	特に、コンピュータのユニットの移動には長い時間が掛かるだろう。そして、
+	移動の後のゲームの保存が問題になるかもしれない。(1/2メガバイトのファイ
+	ルを数ミリ秒で書き込めない?)
+	2つ目の問題は簡単に修正できる。しかし、1つ目の問題を解決できるアイデア
+	はまだない。
 
-	The size of a saved file can be easily tuned by reducing the
-	LIST_SIZE constant in empire.h.  The only current simple tweak
-	for making the computer move faster is to reduce the size
-	of a map.
+	保存ファイルのサイズはempire.hのLIST_SIZE定数を小さくすることで簡単に
+	調整できる。
+	コンピュータの思考を高速にするための唯一の簡単な方法は、マップのサイズ
+	を小さくすることである。
 
 Chuck Simmons
 amdahl!chuck
@@ -133,25 +130,24 @@ Ed James
 edjames@ic.berkeley.edu
 ucbvax!edjames
 
-	The low-end PCs of 2002 are more powerful than Chuck's 1987 mainframe.
-	Performance tuning isn't the issue it once was. :-)
+	2002年のローエンドPCでさえ1987年のChuckのメインフレームよりも強力だ。
+	効率化はかつてほど重要な問題ではない :-)
 
-	My changes enable color on machines with terminfo color support, for
-	a dramatic improvement in appearance and readability of the display.
-	Color support, if present, will be auto-detected at compilation time.
+	私はterminfo colorに対応したマシンで色を使えるようにして、見た目の良さ
+	と読みやすさを劇的に向上させた。
+	カラーの対応は、もし存在すれば、コンパイル時に自動的に検出する。
 
-	They also implement and document a `save-interval' option, addressing
-	one of the misfeatures noted in the bugs file.
+	さらに、`save-interval'オプションの実装と、bugファイルへの不具合の記述
+	を行った。
 
-	I've also tweaked the sources so they compile clean under GCC -- they
-	assumed the older K&R model of forward reference, causing many warning
-	references.
+	また、GCCできれいにコンパイルできるようにソースコードを調整した -- そ
+	れらは古いK&Rの記述を前方参照とみなして多くの警告を発生させていた。
 
-	Finally, I've sped up expand_perimeter by cutting down on the
-	number of array references it has to compute. This eliminates several
-	multiplies from the inner loop, and is a technique that could be
-	applied much more widely in the code.  If efficiency matters that much
-	to you, maybe you need to get outside more.
+	最後に、計算に必要な配列の参照を減らすことでexpand_perimeter関数を高速
+	化した。
+	これで内部ループの乗算を省くことができる。この手法はより広い範囲のコー
+	ドに応用できる。
+	効率が重要ならば、より外に出す必要があるかもしれない。
 
 Eric S. Raymond
 esr@thyrsus.com

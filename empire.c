@@ -38,7 +38,7 @@ empire(void)
 
     clear_screen (); /* nothing on screen */
     pos_str (7, 0, "EMPIRE, Version 5.00 site Amdahl 1-Apr-1988");
-    pos_str (8, 0, "Detailed directions are in EMPIRE.DOC\n");
+    pos_str (8, 0, "詳細はEMPIRE.DOCを読むこと。\n");
     (void) redisplay ();
 
     if (!restore_game ()) /* try to restore previous game */
@@ -56,7 +56,7 @@ empire(void)
 	else {
 	    prompt (""); /* blank top line */
 	    redisplay();
-	    prompt ("Your orders? ");
+	    prompt ("命令は? ");
 	    order = get_chx (); /* get a command */
 	    do_command (order);
 	}
@@ -79,7 +79,7 @@ do_command(char orders)
     switch (orders) {
     case 'A': /* turn on auto move mode */
 	automove = true;
-	error ("Now in Auto-Mode");
+	error ("オートモードに移行した。");
 	user_move ();
 	comp_move (1);
 	save_game ();
@@ -90,7 +90,7 @@ do_command(char orders)
 	break;
 	
     case 'D': /* display round number */
-	error ("Round #%d", date);
+	error ("ラウンド #%d", date);
 	break;
 
     case 'E': /* examine enemy map */
@@ -123,7 +123,7 @@ do_command(char orders)
 	break;
 
     case 'N': /* give enemy free moves */
-	ncycle = getint ("Number of free enemy moves: ");
+	ncycle = getint ("敵が行動するターン数: ");
 	comp_move (ncycle);
 	save_game ();
 	break;
@@ -148,13 +148,13 @@ do_command(char orders)
 	
     case 'T': /* trace: toggle save_movie flag */
 	save_movie = !save_movie;
-	if (save_movie) comment ("Saving movie screens to 'empmovie.dat'.");
-	else comment ("No longer saving movie screens.");
+	if (save_movie) comment ("画面の'empmovie.dat'への保存を開始する。");
+	else comment ("画面は保存されない。");
 	break;
 
     case 'W': /* watch movie */
 	if (resigned || debug) replay_movie ();
-	else error ("You cannot watch movie until computer resigns.");
+	else error ("コンピュータが降伏するまでは観戦できない。");
 	break;
 
     case 'Z': /* print compressed map */
@@ -203,8 +203,8 @@ c_give(void)
 	}
     }
     if (count == 0) {
-	error ("There are no unowned cities.");
-	ksend ("There are no unowned cities.");
+	error ("あなたの都市がない。");
+	ksend ("あなたの都市がない。");
 	return;
     }
     i = irand (count);
@@ -264,7 +264,7 @@ The quit command.  Make sure the user really wants to quit.
 void
 c_quit(void)
 {
-    if (getyn ("QUIT - Are you sure? ")) {
+    if (getyn ("終了 - 本当によいか? ")) {
 	empend ();
     }
 }
@@ -279,7 +279,7 @@ c_sector(void)
 {
     int num;
 
-    num = get_range ("Sector number? ", 0, NUM_SECTORS-1);
+    num = get_range ("セクター番号は? ", 0, NUM_SECTORS-1);
     print_sector_u (num);
 }
 
@@ -297,12 +297,12 @@ c_map(void)
     int i, j;
     char line[MAP_HEIGHT+2];
 
-    prompt ("Filename? ");
+    prompt ("ファイル名は? ");
     get_str (jnkbuf, STRSIZE);
 
     f = fopen (jnkbuf, "w");
     if (f == NULL) {
-	error ("I can't open that file.");
+	error ("ファイルをオープンできなかった。");
 	return;
     }
     for (i = 0; i < MAP_WIDTH; i++) { /* for each column */
@@ -329,7 +329,7 @@ c_examine(void)
 {
     int num;
 
-    num = get_range ("Sector number? ", 0, NUM_SECTORS-1);
+    num = get_range ("セクター番号は? ", 0, NUM_SECTORS-1);
     print_sector_c (num);
 }
 

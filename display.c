@@ -19,6 +19,7 @@ information:
 #include <string.h>
 #include <curses.h>
 #include <stdarg.h>
+#include <locale.h>
 #include "empire.h"
 #include "extern.h"
 
@@ -70,44 +71,52 @@ int direction(chtype c)
     {
     case 'w':
     case 'W':
+    case '8':
     case KEY_UP:
 	return 0;
 
     case 'e':
     case 'E':
+    case '9':
     case KEY_A3:
     case KEY_PPAGE:
 	return 1;
 
     case 'd':
     case 'D':
+    case '6':
     case KEY_RIGHT:
 	return 2;
 
     case 'c':
     case 'C':
+    case '3':
     case KEY_C3:
     case KEY_NPAGE:
 	return 3;
 
     case 'x':
     case 'X':
+    case '2':
     case KEY_DOWN:
 	return 4;
 
     case 'z':
     case 'Z':
+    case '1':
     case KEY_C1:
     case KEY_END:
 	return 5;
 
     case 'a':
     case 'A':
+    case '4':
     case KEY_LEFT:
 	return 6;
 
     case 'q':
     case 'Q':
+    case '7':
     case KEY_A1:
     case KEY_HOME:
 	return 7;
@@ -423,7 +432,7 @@ print_xzoom(view_map_t *vmap)
 {
     print_zoom (vmap);
 #if 0
-    prompt ("Hit a key: ",0,0,0,0,0,0,0,0);
+    prompt ("キーを押す: ",0,0,0,0,0,0,0,0);
     (void) get_chx (); /* wait for user */
 #endif
 }
@@ -451,7 +460,7 @@ print_zoom(view_map_t *vmap)
 	for (c = 0; c < MAP_WIDTH; c += col_inc)
 	    print_zoom_cell (vmap, r, c, row_inc, col_inc);
 
-    pos_str (0, 0, "Round #%d", date);
+    pos_str (0, 0, "ラウンド #%d", date);
 	
     (void) refresh ();
 }
@@ -580,6 +589,7 @@ Initialize the terminal.
 void
 ttinit(void)
 {
+    setlocale(LC_ALL, "");
     (void) initscr();
     (void) noecho();
     (void) crmode();

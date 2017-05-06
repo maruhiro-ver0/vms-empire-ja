@@ -36,7 +36,7 @@ edit(loc_t edit_cursor)
 	
     path_start = -1; /* not building a path yet */
 	
-    comment ("Edit mode...");
+    comment ("エディットモード…");
 
     for (;;) { /* until user gives command to leave */
 	char e;
@@ -148,7 +148,7 @@ Leave edit mode.
 void
 e_leave(void)
 {
-    comment ("Exiting edit mode.");
+    comment ("エディットモードを終了した");
 }
 
 /*
@@ -160,7 +160,7 @@ e_print(loc_t *edit_cursor)
 {
     int sector;
 	
-    sector = get_range ("New Sector? ", 0, NUM_SECTORS-1);
+    sector = get_range ("セクター番号は? ", 0, NUM_SECTORS-1);
 
     /* position cursor at center of sector */
     *edit_cursor = sector_loc (sector);
@@ -545,13 +545,13 @@ e_city_info(loc_t edit_cursor)
 	if (obj->type >= DESTROYER) s++;
 
     if (f == 1 && s == 1) 
-	(void) sprintf (jnkbuf, "1 fighter landed, 1 ship docked");
+	(void) sprintf (jnkbuf, "1機の戦闘機が着陸中、1隻の艦船が入港中");
     else if (f == 1)
-	(void) sprintf (jnkbuf, "1 fighter landed, %d ships docked", s);
+	(void) sprintf (jnkbuf, "1機の戦闘機が着陸中、%d隻の艦船が入港中", s);
     else if (s == 1)
-	(void) sprintf (jnkbuf, "%d fighters landed, 1 ship docked", f);
+	(void) sprintf (jnkbuf, "%d機の戦闘機が着陸中、1隻の艦船が入港中", f);
     else
-	(void) sprintf (jnkbuf, "%d fighters landed, %d ships docked", f, s);
+	(void) sprintf (jnkbuf, "%d機の戦闘機が着陸中、%d隻の艦船が入港中", f, s);
 
     cityp = find_city (edit_cursor);
     ASSERT (cityp != NULL);
@@ -570,10 +570,10 @@ e_city_info(loc_t edit_cursor)
     }
 
     (void) sprintf (junk_buf2,
-		    "City at location %d will complete %s on round %ld",
+		    "都市%dでは後%ldラウンドで%sが完成する。",
 		    loc_disp(cityp->loc),
-		    piece_attr[(int)cityp->prod].article,
-		    date + piece_attr[(int)cityp->prod].build_time - cityp->work);
+		    date + piece_attr[(int)cityp->prod].build_time - cityp->work,
+		    piece_attr[(int)cityp->prod].article);
 
     info (junk_buf2, jnkbuf, func_buf);
 }
@@ -601,7 +601,7 @@ void
 e_help(void)
 {
     help (help_edit, edit_lines);
-    prompt ("Press any key to continue: ");
+    prompt ("何かキーを押すと続ける: ");
     (void) get_chx ();
 }
 

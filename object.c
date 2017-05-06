@@ -418,8 +418,8 @@ move_sat(piece_info_t *obj)
 	move_sat1 (obj);
 	if (obj->range == 0) {
 	    if (obj->owner == USER)
-		comment ("Satellite at %d crashed and burned.", loc_disp(obj->loc));
-	    ksend ("Satellite at %d crashed and burned.", loc_disp(obj->loc));
+		comment ("人工衛星%dは墜落し燃え尽きた。", loc_disp(obj->loc));
+	    ksend ("人工衛星%dは墜落し燃え尽きた。", loc_disp(obj->loc));
 	    kill_obj (obj, obj->loc);
 	}
     }
@@ -476,21 +476,21 @@ void describe_obj(piece_info_t *obj)
 
     switch (obj->type) { /* set other information */
     case FIGHTER:
-	(void) sprintf (other,"; range = %d",obj->range);
+	(void) sprintf (other,"; 燃料 = %d",obj->range);
 	break;
 
     case TRANSPORT:
-	(void) sprintf (other,"; armies = %d",obj->count);
+	(void) sprintf (other,"; 部隊 = %d",obj->count);
 	break;
 
     case CARRIER:
-	(void) sprintf (other,"; fighters = %d",obj->count);
+	(void) sprintf (other,"; 戦闘機 = %d",obj->count);
 	break;
     }
 
-    prompt ("%s at %d:  moves = %d; hits = %d; func = %s%s",
-	    piece_attr[obj->type].name,
+    prompt ("%dの%s:  移動 = %d; ヒット = %d; 任務 = %s%s",
 	    loc_disp(obj->loc),
+	    piece_attr[obj->type].name,
 	    obj_moves (obj) - obj->moved,
 	    obj->hits,
 	    func,
@@ -591,12 +591,12 @@ set_prod(city_info_t *cityp)
     for (;;) {
 	int i;
 
-	prompt ("What do you want the city at %d to produce? ",loc_disp(cityp->loc));
+	prompt ("都市%dで何を生産するか? ",loc_disp(cityp->loc));
 
 	i = get_piece_name ();
 		
 	if (i == NOPIECE)
-	    error ("I don't know how to build those.");
+	    error ("それは生産できない。");
 			
 	else {
 	    cityp->prod = i;

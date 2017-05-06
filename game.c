@@ -315,7 +315,7 @@ bool select_cities(void)
     make_pair (); /* create list of ranked pairs */
 
     (void) sprintf (jnkbuf,
-		    "Choose a difficulty level where 0 is easy and %d is hard: ",
+		    "難易度を0(簡単)から%d(難しい)の間で選択せよ: ",
 		    ncont*ncont-1);
 
     pair = get_range (jnkbuf, 0, ncont*ncont-1);
@@ -330,7 +330,7 @@ bool select_cities(void)
 	userp = cont_tab[user_cont].cityp[useri];
     } while (userp == compp);
 
-    topmsg(1, "Your city is at %d.", loc_disp(userp->loc));
+    topmsg(1, "あなたの都市は%dだ。", loc_disp(userp->loc));
     delay (); /* let user see output before we set_prod */
 
     /* update city and map */
@@ -519,7 +519,7 @@ void save_game(void)
 
     f = fopen (savefile, "w"); /* open for output */
     if (f == NULL) {
-	perror ("Cannot save saved game");
+	perror ("ゲームを保存できなかった");
 	return;
     }
     wbuf(SAVECOOKIE);
@@ -541,7 +541,7 @@ void save_game(void)
     wval (comp_score);
 
     (void) fclose (f);
-    topmsg (3, "Game saved.");
+    topmsg (3, "ゲームを保存した。");
 }
 
 /*
@@ -563,7 +563,7 @@ int restore_game(void)
 
     f = fopen (savefile, "r"); /* open for input */
     if (f == NULL) {
-	perror ("Cannot open saved game");
+	perror ("ゲームを復帰できなかった");
 	return (false);
     }
     if (fgets(buf, sizeof(buf), f) == NULL)
@@ -635,7 +635,7 @@ int restore_game(void)
 	
     (void) fclose (f);
     kill_display (); /* what we had is no longer good */
-    topmsg (3, "Game restored from save file.");
+    topmsg (3, "保存されたゲームを復帰した。");
     return (true);
 }
 	
@@ -669,7 +669,7 @@ void read_embark(piece_info_t *list, int piece_type)
 
 void inconsistent(void)
 {
-    (void) printf ("saved game is inconsistent.  Please remove it.\n");
+    (void) printf ("保存されたゲームが不正だ。削除すること。\n");
     exit (1);
 }
 
@@ -684,11 +684,11 @@ bool xwrite(FILE *f, char *buf, int size)
  
     bytes = fwrite (buf, 1, size, f);
     if (bytes == -1) {
-	perror ("Write to save file failed");
+	perror ("保存に失敗した");
 	return (false);
     }
     if (bytes != size) {
-	perror ("Cannot complete write to save file.\n");
+	perror ("完全に書ききれなかった。\n");
 	return (false);
     }
     return (true);
@@ -705,11 +705,11 @@ bool xread(FILE *f, char *buf, int size)
 
     bytes = fread (buf, 1, size, f);
     if (bytes == -1) {
-	perror ("Read from save file failed");
+	perror ("保存されたファイルを読み込めなかった");
 	return (false);
     }
     if (bytes != size) {
-	perror ("Saved file is too short.\n");
+	perror ("保存されたファイルが短すぎる。\n");
 	return (false);
     }
     return (true);
@@ -733,7 +733,7 @@ save_movie_screen(void)
 
     f = fopen ("empmovie.dat", "a"); /* open for append */
     if (f == NULL) {
-	perror ("Cannot open empmovie.dat");
+	perror ("empmovie.datに書き込めなかった");
 	return;
     }
 
@@ -769,7 +769,7 @@ replay_movie(void)
 	
     f = fopen ("empmovie.dat", "r"); /* open for input */
     if (f == NULL) {
-	perror ("Cannot open empmovie.dat");
+	perror ("empmovie.datを読み込めなかった");
 	return;
     }
     round = 0;

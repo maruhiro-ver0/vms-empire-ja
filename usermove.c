@@ -54,9 +54,9 @@ user_move(void)
 	    }
 	    else if (city[i].work++ >= (long)piece_attr[prod].build_time) {
 		/* kermyt begin */
-		ksend("%s has been completed at city %d.\n", piece_attr[prod].article,loc_disp(city[i].loc));
+		ksend("都市%dで%sが完成した。\n", loc_disp(city[i].loc),piece_attr[prod].article);
 		/* kermyt end */
-		comment ("%s has been completed at city %d.\n", piece_attr[prod].article,loc_disp(city[i].loc));
+		comment ("都市%dで%sが完成した。\n", loc_disp(city[i].loc),piece_attr[prod].article);
 
 		produce (&city[i]);
 		/* produce should set object.moved to 0 */
@@ -179,10 +179,10 @@ piece_move(piece_info_t *obj)
 		obj->range = piece_attr[FIGHTER].range;
 		obj->moved = speed;
 		obj->func = NOFUNC;
-		comment ("Landing confirmed.");
+		comment ("着地した。");
 	    }
 	    else if (obj->range == 0) {
-		comment ("Fighter at %d crashed and burned.",loc_disp(obj->loc));
+		comment ("戦闘機%dは墜落し燃え尽きた。",loc_disp(obj->loc));
 		kill_obj (obj, obj->loc);
 	    }
 	}
@@ -522,14 +522,14 @@ void ask_user(piece_info_t *obj)
 
 	c = get_chx (); /* get command from user (no echo) */
 	switch (c) {
-	case 'Q': user_dir (obj, NORTHWEST); return;
-	case 'W': user_dir (obj, NORTH); return;
-	case 'E': user_dir (obj, NORTHEAST); return;
-	case 'D': user_dir (obj, EAST); return;
-	case 'C': user_dir (obj, SOUTHEAST); return;
-	case 'X': user_dir (obj, SOUTH); return;
-	case 'Z': user_dir (obj, SOUTHWEST); return;
-	case 'A': user_dir (obj, WEST); return;
+	case 'Q': case '7': user_dir (obj, NORTHWEST); return;
+	case 'W': case '8': user_dir (obj, NORTH); return;
+	case 'E': case '9': user_dir (obj, NORTHEAST); return;
+	case 'D': case '6': user_dir (obj, EAST); return;
+	case 'C': case '3': user_dir (obj, SOUTHEAST); return;
+	case 'X': case '2': user_dir (obj, SOUTH); return;
+	case 'Z': case '1': user_dir (obj, SOUTHWEST); return;
+	case 'A': case '4': user_dir (obj, WEST); return;
 
 	case 'J': edit (obj->loc); reset_func (obj); return;
 	case 'V': user_set_city_func (obj); reset_func (obj); return;
@@ -613,7 +613,7 @@ void
 user_help(void)
 {
     help (help_user, user_lines);
-    prompt ("Press any key to continue: ");
+    prompt ("何かキーを押すと: ");
     (void)get_chx ();
 }
 
@@ -628,14 +628,14 @@ user_set_dir(piece_info_t *obj)
 
     c = get_chx ();
     switch (c) {
-    case 'Q': obj->func = MOVE_NW; break;
-    case 'W': obj->func = MOVE_N ; break;
-    case 'E': obj->func = MOVE_NE; break;
-    case 'D': obj->func = MOVE_E ; break;
-    case 'C': obj->func = MOVE_SE; break;
-    case 'X': obj->func = MOVE_S ; break;
-    case 'Z': obj->func = MOVE_SW; break;
-    case 'A': obj->func = MOVE_W ; break;
+    case 'Q': case '7': obj->func = MOVE_NW; break;
+    case 'W': case '8': obj->func = MOVE_N ; break;
+    case 'E': case '9': obj->func = MOVE_NE; break;
+    case 'D': case '6': obj->func = MOVE_E ; break;
+    case 'C': case '3': obj->func = MOVE_SE; break;
+    case 'X': case '2': obj->func = MOVE_S ; break;
+    case 'Z': case '1': obj->func = MOVE_SW; break;
+    case 'A': case '4': obj->func = MOVE_W ; break;
     default: complain (); break;
     }
 }
@@ -832,7 +832,7 @@ user_dir(piece_info_t *obj, int dir)
 	return;
     }
     if (!map[loc].on_board) {
-	error ("You cannot move to the edge of the world.");
+	error ("世界の端へ移動することはできない。");
 	delay ();
 	return;
     }
@@ -857,25 +857,25 @@ user_dir_army(piece_info_t *obj, loc_t loc)
 
     else if (user_map[loc].contents == 'T') /* transport full? */
 	fatal (obj, loc,
-	       "Sorry, sir.  There is no more room on the transport.  Do you insist? ",
-	       "Your army jumped into the briny and drowned.");
+	       "司令官、残念ながら輸送艦に空きがない。それでも載せようとするか? ",
+	       "あなたの部隊は海に飛び込み溺れた。");
 
     else if (map[loc].contents == MAP_SEA) { /* going for a swim? */
 	bool enemy_killed = false;
 
 	if (!getyn ( /* thanks to Craig Hansen for this next message */
-		"Troops can't walk on water, sir.  Do you really want to go to sea? "))
+		"司令官、地上部隊は海の上を歩けない。本当に海に向かうのか? "))
 	    return;
 
 	if (user_map[obj->loc].contents == 'T')
 	{
-	    comment ("Your army jumped into the briny and drowned.");
-	    ksend ("Your army jumped into the briny and drowned.\n");
+	    comment ("あなたの部隊は海に飛び込み溺れた。");
+	    ksend ("あなたの部隊は海に飛び込み溺れた。\n");
 	}
 	else if (user_map[loc].contents == MAP_SEA)
 	{
-	    comment ("Your army marched dutifully into the sea and drowned.");
-	    ksend ("Your army marched dutifully into the sea and drowned.\n");
+	    comment ("あなたの部隊は整然と海へと行進し溺れた。");
+	    ksend ("あなたの部隊は整然と海へと行進し溺れた。\n");
 	}
 	else { /* attack something at sea */
 	    enemy_killed = islower (user_map[loc].contents);
@@ -883,8 +883,8 @@ user_dir_army(piece_info_t *obj, loc_t loc)
 	
 	    if (obj->hits > 0) /* ship won? */
 	    {
-		comment ("Your army regretfully drowns after its successful assault.");
-		ksend ("Your army regretfully drowns after its successful assault.");
+		comment ("残念ながらあなたの部隊は強襲の後に溺れた。");
+		ksend ("残念ながらあなたの部隊は強襲の後に溺れた。");
 	    }
 	}
 	if (obj->hits > 0) {
@@ -897,7 +897,7 @@ user_dir_army(piece_info_t *obj, loc_t loc)
     else if (isupper (user_map[loc].contents)
 	     && user_map[loc].contents != 'X') { /* attacking self */
 	if (!getyn (
-		"Sir, those are our men!  Do you really want to attack them? "))
+		"司令官、それは味方だ! 本当に攻撃するのか? "))
 	    return;
 
 	attack (obj, loc);
@@ -916,12 +916,12 @@ user_dir_fighter(piece_info_t *obj, loc_t loc)
 {
     if (map[loc].contents == MAP_CITY)
 	fatal (obj, loc,
-	       "That's never worked before, sir.  Do you really want to try? ",
-	       "Your fighter was shot down.");
+	       "司令官、それは決して成功しないだろう。本当にそうするのか? ",
+	       "あなたの戦闘機は撃墜された。");
 
     else if (isupper (user_map[loc].contents)) {
-	if (!getyn ("Sir, those are our men!  "
-		    "Do you really want to attack them? "))
+	if (!getyn ("司令官、それは味方だ!  "
+		    "本当に攻撃するのか? "))
 	    return;
 
 	attack (obj, loc);
@@ -940,23 +940,23 @@ void
 user_dir_ship(piece_info_t *obj, loc_t loc)
 {
     if (map[loc].contents == MAP_CITY) {
-	(void) sprintf (jnkbuf, "Your %s broke up on shore.",
+	(void) sprintf (jnkbuf, "あなたの%sは陸に乗り上げてバラバラになった。",
 			piece_attr[obj->type].name);
 
 	fatal (obj, loc,
-	       "That's never worked before, sir.  Do you really want to try? ",
+	       "司令官、それは決して成功しないだろう。本当にそうするのか? ",
 	       jnkbuf);
     }
 
     else if (map[loc].contents == MAP_LAND) { /* moving ashore? */
 	bool enemy_killed = false;
 
-	if (!getyn ("Ships need sea to float, sir.  Do you really want to go ashore? ")) return;
+	if (!getyn ("船は海に浮かぶものだ。本当に陸に向かうのか? ")) return;
 
 	if (user_map[loc].contents == MAP_LAND)
 	{
-	    comment ("Your %s broke up on shore.", piece_attr[obj->type].name);
-	    ksend ("Your %s broke up on shore.", piece_attr[obj->type].name);
+	    comment ("あなたの%sは陸に乗り上げてバラバラになった。", piece_attr[obj->type].name);
+	    ksend ("あなたの%sは陸に乗り上げてバラバラになった。", piece_attr[obj->type].name);
 	}
 	else { /* attack something on shore */
 	    enemy_killed = islower (user_map[loc].contents);
@@ -964,8 +964,8 @@ user_dir_ship(piece_info_t *obj, loc_t loc)
 
 	    if (obj->hits > 0) /* ship won? */
 	    {
-		comment ("Your %s breaks up after its successful assault.", piece_attr[obj->type].name);
-		ksend ("Your %s breaks up after its successful assault.", piece_attr[obj->type].name);
+		comment ("あなたの%sは強襲の後にバラバラになった。", piece_attr[obj->type].name);
+		ksend ("あなたの%sは強襲の後にバラバラになった。", piece_attr[obj->type].name);
 	    }
 	}
 	if (obj->hits > 0) {
@@ -977,7 +977,7 @@ user_dir_ship(piece_info_t *obj, loc_t loc)
 		
     else if (isupper (user_map[loc].contents)) { /* attacking self */
 	if (!getyn (
-		"Sir, those are our men!  Do you really want to attack them? "))
+		"司令官、それは味方だ! 本当に攻撃するのか? "))
 	    return;
 
 	attack (obj, loc);
@@ -1002,8 +1002,8 @@ move_army_to_city(piece_info_t *obj, loc_t city_loc)
     if (tt != NULL) move_obj (obj, city_loc);
 
     else fatal (obj, city_loc,
-		"That's our city, sir!  Do you really want to attack the garrison? ",
-		"Your rebel army was liquidated.");
+		"司令官、それは我々の都市だ! 本当に攻撃するのか? ",
+		"あなたの反乱軍は鎮圧された。");
 }
 
 /*
@@ -1014,10 +1014,10 @@ void
 user_cancel_auto(void)
 {
     if (!automove)
-	comment ("Not in auto mode!");
+	comment ("移動モードではない!");
     else {
 	automove = false;
-	comment ("Auto mode cancelled.");
+	comment ("移動モードを中断した。");
     }
 }
 

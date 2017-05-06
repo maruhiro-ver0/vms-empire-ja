@@ -40,12 +40,12 @@ attack_city(piece_info_t *att_obj, loc_t loc)
 
     if (irand (2) == 0) { /* attack fails? */
 	if (att_owner == USER) {
-	    comment ("The scum defending the city crushed your attacking blitzkrieger.");
-	    ksend ("The scum defending the city crushed your attacking blitzkrieger.\n"); //kermyt
+	    comment ("都市の防衛隊があなたの部隊を退けた。");
+	    ksend ("都市の防衛隊があなたの部隊を退けた。\n"); //kermyt
 	}
 	else if (city_owner == USER) {
-	    ksend ("Your city at %d is under attack.\n",loc_disp(cityp->loc)); //kermyt
-	    comment ("Your city at %d is under attack.",loc_disp(cityp->loc));
+	    ksend ("支配下の都市%dが攻撃された。\n",loc_disp(cityp->loc)); //kermyt
+	    comment ("支配下の都市%dが攻撃された。",loc_disp(cityp->loc));
 	}
 	kill_obj (att_obj, loc);
     }
@@ -55,16 +55,16 @@ attack_city(piece_info_t *att_obj, loc_t loc)
 	kill_obj (att_obj, loc);
 
 	if (att_owner == USER) {
-	    ksend ("City at %d has been subjugated!\n",loc_disp(cityp->loc)); //kermyt
-	    error ("City at %d has been subjugated!",loc_disp(cityp->loc));
+	    ksend ("都市%dを支配下に置いた!\n",loc_disp(cityp->loc)); //kermyt
+	    error ("都市%dを支配下に置いた!",loc_disp(cityp->loc));
 
-	    extra ("Your army has been dispersed to enforce control.");
-	    ksend ("Your army has been dispersed to enforce control.\n");
+	    extra ("占領のため部隊は解散した。");
+	    ksend ("占領のため部隊は解散した。\n");
 	    set_prod (cityp);
 	}
 	else if (city_owner == USER) {
-	    ksend("City at %d has been lost to the enemy!\n",loc_disp(cityp->loc)); //kermyt
-	    comment ("City at %d has been lost to the enemy!",loc_disp(cityp->loc));
+	    ksend("都市%dを失った!\n",loc_disp(cityp->loc)); //kermyt
+	    comment ("都市%dを失った!",loc_disp(cityp->loc));
 	}
     }
     /* let city owner see all results */
@@ -149,27 +149,27 @@ describe(piece_info_t *win_obj, piece_info_t *lose_obj, loc_t loc)
 	if (win_obj->owner == USER) {
 	    int diff;
 	    user_score += piece_attr[lose_obj->type].build_time; 
-	    ksend ("Enemy %s at %d destroyed.\n",piece_attr[lose_obj->type].name,loc_disp(loc)); //kermyt
-	    topmsg (1, "Enemy %s at %d destroyed.",piece_attr[lose_obj->type].name,loc_disp(loc));
-	    ksend ("Your %s has %d hits left\n",piece_attr[win_obj->type].name,win_obj->hits); //kermyt
-	    topmsg (2, "Your %s has %d hits left.", piece_attr[win_obj->type].name, win_obj->hits);
+	    ksend ("敵の%s%dを破壊した。\n",piece_attr[lose_obj->type].name,loc_disp(loc)); //kermyt
+	    topmsg (1, "敵の%s%dを破壊した。",piece_attr[lose_obj->type].name,loc_disp(loc));
+	    ksend ("あなたの%sの残りヒットポイントは%dだ。\n",piece_attr[win_obj->type].name,win_obj->hits); //kermyt
+	    topmsg (2, "あなたの%sの残りヒットポイントは%dだ。", piece_attr[win_obj->type].name, win_obj->hits);
 				
 	    diff = win_obj->count - obj_capacity (win_obj);
 	    if (diff > 0) switch (win_obj->cargo->type) {
 		case ARMY:
-		    ksend("%d armies fell overboard and drowned in the assault.\n",diff); //kermyt
-		    topmsg (3,"%d armies fell overboard and drowned in the assault.",diff);
+		    ksend("攻撃で%d個の地上部隊が海に落ちておぼれた。\n",diff); //kermyt
+		    topmsg (3,"攻撃で%d個の地上部隊が海に落ちておぼれた。",diff);
 		    break;
 		case FIGHTER:
-		    ksend("%d fighters fell overboard and were lost in the assult.\n",diff); //kermyt
-		    topmsg (3,"%d fighters fell overboard and were lost in the assault.",diff);
+		    ksend("攻撃で%d機の戦闘機が海に落ちて失われた。\n",diff); //kermyt
+		    topmsg (3,"攻撃で%dの戦闘機が海に落ちて失われた。",diff);
 		    break;
 		}
 	}
 	else {
 	    comp_score += piece_attr[lose_obj->type].build_time;
-	    ksend ("Your %s at %d destroyed.\n",piece_attr[lose_obj->type].name,loc_disp(loc)); //kermyt
-	    topmsg (3, "Your %s at %d destroyed.",piece_attr[lose_obj->type].name,loc_disp(loc));
+	    ksend ("あなたの%s%dは破壊された。\n",piece_attr[lose_obj->type].name,loc_disp(loc)); //kermyt
+	    topmsg (3, "あなたの%s%dは破壊された。",piece_attr[lose_obj->type].name,loc_disp(loc));
 	}
 	set_need_delay ();
     }

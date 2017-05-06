@@ -128,7 +128,7 @@ Print out a generic error message.
 void
 huh(void)
 {
-    error ("Type H for Help.");
+    error ("Hキーでヘルプを表示する。");
 }
 
 /*
@@ -271,13 +271,13 @@ getint(char *message)
 		
 	for (p = buf; *p; p++) {
 	    if (*p < '0' || *p > '9') {
-		error ("Please enter an integer.",0,0,0,0,0,0,0,0);
+		error ("整数で入力すること。",0,0,0,0,0,0,0,0);
 		break;
 	    }
 	}
 	if (*p == 0) { /* no error yet? */
 	    if (p - buf > 7) /* too many digits? */
-		error ("Please enter a small integer.",0,0,0,0,0,0,0,0);
+		error ("もっと小さな数を入力すること。",0,0,0,0,0,0,0,0);
 	    else return (atoi (buf));
 	}
     }
@@ -330,9 +330,9 @@ getyn(char *message)
 	c = get_chx ();
 
 	if (c == 'Y') return (true);
-	if (c == 'N') return (false);
+	if (c == 'N' || c == ' ') return (false);
 
-	error ("Please answer Y or N.",0,0,0,0,0,0,0,0);
+	error ("YかNで答えること。",0,0,0,0,0,0,0,0);
     }
 }
 
@@ -348,7 +348,7 @@ get_range(char *message, int low, int high)
 
 	if (result >= low && result <= high) return (result);
 
-	error ("Please enter an integer in the range %d..%d.",low, high);
+	error ("%dから%dの間の整数を入力すること。",low, high);
     }
 }
 
@@ -367,7 +367,7 @@ help(char **text, int nlines)
     clear_screen ();
 
     pos_str (NUMTOPS, 1, text[0]); /* mode */
-    pos_str (NUMTOPS, 41, "See empire(6) for more information.");
+    pos_str (NUMTOPS, 41, "詳細はempire(6)を読むこと。");
 
     for (i = 1; i < nlines; i++) {
 	if (i > text_lines)
@@ -375,8 +375,8 @@ help(char **text, int nlines)
 	else pos_str (i + NUMTOPS + 1, 1, text[i]);
     }
 
-    pos_str (text_lines + NUMTOPS + 2,  1, "--Piece---Yours-Enemy-Moves-Hits-Cost");
-    pos_str (text_lines + NUMTOPS + 2, 41, "--Piece---Yours-Enemy-Moves-Hits-Cost");
+    pos_str (text_lines + NUMTOPS + 2,  1, "-ユニット-あなた-敵---移動--HP-コスト");
+    pos_str (text_lines + NUMTOPS + 2, 41, "-ユニット-あなた-敵---移動--HP-コスト");
 
     for (i = 0; i < NUM_OBJECTS; i++) {
 	if (i >= (NUM_OBJECTS+1)/2) {

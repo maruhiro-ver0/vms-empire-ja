@@ -1,19 +1,17 @@
-		README for vms-empire
+			vms-empire の README
 
-VMS-Empire is a simulation of a full-scale war between two
-emperors, the computer and you.  Naturally, there is only
-room for one, so the object of the game is to destroy
-the other.  The computer plays by the same rules that you
-do.  This game is the ancestor of all the multiplayer 4X
-simulations out there, including Civilization and Master of Orion.
+Empireはあなたとコンピュータの2人の皇帝による全面戦争のシミュレーションゲーム
+です。もちろん勝つのは1人で、ゲームの目的は相手を打ち負かすことです。コンピュ
+ータとあなたは同じルールでプレーします。
+このゲームは、後のCivilization (1990)やMaster of Orion (1993)などの全てのマル
+チプレイヤー4X(expand/explore/exploit/exterminate)(探索/拡張/利用/排除)シミュ
+レーションゲームの原型となりました。
 
-This code originated under VMS but has been forward-ported to
-modern ANSI C.  It is known to run not only on Linux but
-also under Windows and Mac OS X; all you need is a local
-port of the curses library.
+このコードは元はVMS用ですが、現代のANSI Cに移植されました。Linuxだけでなく、
+WindowsとMac OS Xでも実行できます。必要なのはそれぞれの環境のcursesライブラリ
+だけです。
 
-The files HACKING and BUGS will be of interest if you intend
-to modify this code.
+HACKINGとBUGSファイルは、このコードを変更するのに役立つでしょう。
 
-The ancestral code was by Chuck Simmons <chuck@amdahl.com>.  Since
-around 1990 it has been maintained by Eric S. Raymond <esr@thyrsus.com>
+このコードは最初はChuck Simmons <chuck@amdahl.com>に書かれました。1990年頃から
+はEric S. Raymond <esr@thyrsus.com>が管理しています。
