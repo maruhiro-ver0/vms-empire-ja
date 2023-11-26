@@ -17,7 +17,7 @@ util.c -- various utility routines.
 #include <unistd.h>
 #include "empire.h"
 #include "extern.h"
-
+#define kill(pid, sig) /* for WIN32 */
 /*
 Report a bug.
 */

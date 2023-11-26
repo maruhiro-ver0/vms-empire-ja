@@ -58,8 +58,10 @@ OFILES = \
 all: vms-empire
 
 vms-empire: $(OFILES)
-	$(CC) $(PROFILE) -o vms-empire $(OFILES) $(LIBS)
+	$(CC) $(PROFILE) -o vms-empire $(OFILES) -lcurses
 
+.c.o:
+	nkf -s -W < $< | sed 's/[\x80-\xff]\\/&\\/' | gcc -c -xc -o $@ -
 attack.o:: extern.h empire.h
 compmove.o:: extern.h empire.h
 data.o:: empire.h

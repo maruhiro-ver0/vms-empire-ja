@@ -15,7 +15,7 @@ game.c -- Routines to initialize, save, and restore a game.
 #include <ctype.h>
 #include "empire.h"
 #include "extern.h"
-
+#define fopen(file, mode)	fopen(file, mode "b") /* for WIN32 */
 count_t remove_land(loc_t loc, count_t num_land);
 bool select_cities(void);
 bool find_next(loc_t *mapi);
